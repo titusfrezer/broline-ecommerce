@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "151976267401",
+    "project_id": "broline-ecommerce",
+    "storage_bucket": "broline-ecommerce.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:151976267401:android:b8fded78d8bf31e4df8058",
+        "android_client_info": {
+          "package_name": "broline.broline"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "151976267401-uah2vuc799s62oo0trofgldc95lndbpf.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "broline.broline",
+            "certificate_hash": "a1f03730a7e944518b80f062db89c1e2dda688cf"
+          }
+        },
+        {
+          "client_id": "151976267401-dop0lhql3e56djfgvo5mp20vgdsrk4uj.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB1V6IKsmCtN8jppfgTzQUOySngFQUhwa4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "151976267401-dop0lhql3e56djfgvo5mp20vgdsrk4uj.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
