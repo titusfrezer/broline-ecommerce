@@ -109,13 +109,13 @@ class HomePage extends StatelessWidget {
               SliverToBoxAdapter(
                 child: Column(
                   children: [
-                    _buildCategoryList(),
+                    _buildCategoryList(),K
                     _buildRecentProducts(),
                     Container(
                       width: double.maxFinite,
                       margin: EdgeInsets.only(left: 30, right: 30, top: 50),
                       child: Text(
-                        "Recent Products",
+                        "All Products",
                         style: TextStyle(
                             fontSize: 22, fontWeight: FontWeight.w600),
                       ),
@@ -279,7 +279,7 @@ class HomePage extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Padding(
-            padding: EdgeInsets.symmetric(horizontal: 20, vertical: 20),
+            padding: EdgeInsets.only(left: 20, right: 10,top: 20),
             child: Text(
               "Recent Products",
               style: TextStyle(fontSize: 22, fontWeight: FontWeight.w600),
@@ -289,13 +289,16 @@ class HomePage extends StatelessWidget {
             child: Padding(
               padding: EdgeInsets.symmetric(
                 horizontal: 20,
+                vertical: 20
               ),
               child: GridView.builder(
+                scrollDirection: Axis.horizontal,
                   gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                      childAspectRatio: 0.75,
-                      crossAxisCount: 2,
-                      crossAxisSpacing: 2,
-                      mainAxisSpacing: 2),
+
+                      crossAxisCount: 1,
+                      childAspectRatio: 1.5
+
+                      ),
                   itemBuilder: (BuildContext context, int index) {
                     return Card(
                       color: BrolineColor.brolineWhite,
