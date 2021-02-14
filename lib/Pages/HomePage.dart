@@ -109,7 +109,7 @@ class HomePage extends StatelessWidget {
               SliverToBoxAdapter(
                 child: Column(
                   children: [
-                    _buildCategoryList(),K
+                    _buildCategoryList(),
                     _buildRecentProducts(),
                     Container(
                       width: double.maxFinite,
