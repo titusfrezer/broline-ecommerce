@@ -7,5 +7,4 @@ class BrolineColor{
   static final Color brolineLightOrange = Colors.deepOrange.shade50;
   static final Color brolineDarkOrange= Colors.deepOrange.shade400;
 
-
 }
