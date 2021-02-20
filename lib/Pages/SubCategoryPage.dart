@@ -17,7 +17,8 @@ class _SubCategoryPageState extends State<SubCategoryPage> {
   Widget backArrow;
   Widget search;
   Widget title;
-  Widget _buildSearch(bool innerScrolled){
+
+  Widget _buildSearch(bool innerScrolled) {
     return IconButton(
         icon: Icon(
           Icons.search,
@@ -25,42 +26,32 @@ class _SubCategoryPageState extends State<SubCategoryPage> {
         ),
         onPressed: () {
           setState(() {
-
-            if(isSterched == true){
+            if (isSterched == true) {
               title = Container(
-
                   width: double.maxFinite,
-                  padding: EdgeInsets.symmetric(
-                      horizontal: 15, vertical: 3),
+                  padding: EdgeInsets.symmetric(horizontal: 15, vertical: 3),
                   decoration: BoxDecoration(
                       color: BrolineColor.brolineLightGrey,
                       borderRadius: BorderRadius.circular(16)),
                   child: TextFormField(
                       decoration: InputDecoration(
-                        icon: Icon(
-                          Icons.search,
-                          color: BrolineColor.brolineDarkGrey,
-                        ),
-                        hintText: 'Search Category',
-                        hintStyle: TextStyle(fontSize: 18),
-                      )));
+                    icon: Icon(
+                      Icons.search,
+                      color: BrolineColor.brolineDarkGrey,
+                    ),
+                    hintText: 'Search Category',
+                    hintStyle: TextStyle(fontSize: 18),
+                  )));
               isSterched = false;
-            }else{
-
-              title =   Text(
+            } else {
+              title = Text(
                 widget.categoryName,
                 style: TextStyle(color: BrolineColor.brolineDarkGrey),
               );
               isSterched = true;
-
             }
 
-
-
-
             print("Yes");
-
-
           });
         });
   }
@@ -68,7 +59,7 @@ class _SubCategoryPageState extends State<SubCategoryPage> {
   @override
   void initState() {
     isSterched = false;
-    backArrow =IconButton(
+    backArrow = IconButton(
         icon: Icon(
           Icons.arrow_back_ios_outlined,
           color: BrolineColor.brolineDarkGrey,
@@ -78,8 +69,7 @@ class _SubCategoryPageState extends State<SubCategoryPage> {
             if (isSterched == true) {
               title = Text(
                 widget.categoryName,
-                style:
-                TextStyle(color: BrolineColor.brolineDarkGrey),
+                style: TextStyle(color: BrolineColor.brolineDarkGrey),
               );
               isSterched = false;
             } else {
@@ -107,45 +97,52 @@ class _SubCategoryPageState extends State<SubCategoryPage> {
               sliver: SliverAppBar(
                 floating: true,
                 pinned: true,
-                title: innerBoxScrolled == true  ? title =Container(
-
-                    width: double.maxFinite,
-                    padding: EdgeInsets.symmetric(
-                        horizontal: 15, vertical: 3),
-                    decoration: BoxDecoration(
-                        color: BrolineColor.brolineLightGrey,
-                        borderRadius: BorderRadius.circular(16)),
-                    child: TextFormField(
-                        decoration: InputDecoration(
+                title: innerBoxScrolled == true
+                    ? title = Container(
+                        width: double.maxFinite,
+                        padding:
+                            EdgeInsets.symmetric(horizontal: 15, vertical: 3),
+                        decoration: BoxDecoration(
+                            color: BrolineColor.brolineLightGrey,
+                            borderRadius: BorderRadius.circular(16)),
+                        child: TextFormField(
+                            decoration: InputDecoration(
                           icon: Icon(
                             Icons.search,
                             color: BrolineColor.brolineDarkGrey,
                           ),
                           hintText: 'Search Category',
                           hintStyle: TextStyle(fontSize: 18),
-                        ))): isSterched == false ? Text(
-                  widget.categoryName,
-                  style: TextStyle(color: BrolineColor.brolineDarkGrey),
-                ):Container(
-
-                    width: double.maxFinite,
-                    padding: EdgeInsets.symmetric(
-                        horizontal: 15, vertical: 3),
-                    decoration: BoxDecoration(
-                        color: BrolineColor.brolineLightGrey,
-                        borderRadius: BorderRadius.circular(16)),
-                    child: TextFormField(
-                        decoration: InputDecoration(
-                          icon: Icon(
-                            Icons.search,
-                            color: BrolineColor.brolineDarkGrey,
-                          ),
-                          hintText: 'Search Category',
-                          hintStyle: TextStyle(fontSize: 18),
-                        ))),
+                        )))
+                    : isSterched == false
+                        ? Text(
+                            widget.categoryName,
+                            style:
+                                TextStyle(color: BrolineColor.brolineDarkGrey),
+                          )
+                        : Container(
+                            width: double.maxFinite,
+                            padding: EdgeInsets.symmetric(
+                                horizontal: 15, vertical: 3),
+                            decoration: BoxDecoration(
+                                color: BrolineColor.brolineLightGrey,
+                                borderRadius: BorderRadius.circular(16)),
+                            child: TextFormField(
+                                decoration: InputDecoration(
+                              icon: Icon(
+                                Icons.search,
+                                color: BrolineColor.brolineDarkGrey,
+                              ),
+                              hintText: 'Search Category',
+                              hintStyle: TextStyle(fontSize: 18),
+                            ))),
                 elevation: 0.0,
                 actions: [
-                 innerBoxScrolled == true? SizedBox() : isSterched == true? SizedBox():_buildSearch(false)
+                  innerBoxScrolled == true
+                      ? SizedBox()
+                      : isSterched == true
+                          ? SizedBox()
+                          : _buildSearch(false)
                 ],
                 backgroundColor: BrolineColor.brolineWhite,
                 leading: IconButton(
@@ -159,7 +156,7 @@ class _SubCategoryPageState extends State<SubCategoryPage> {
                           title = Text(
                             widget.categoryName,
                             style:
-                            TextStyle(color: BrolineColor.brolineDarkGrey),
+                                TextStyle(color: BrolineColor.brolineDarkGrey),
                           );
                           isSterched = false;
                         } else {
@@ -167,8 +164,8 @@ class _SubCategoryPageState extends State<SubCategoryPage> {
                         }
                       });
                     }),
-                ),
               ),
+            ),
 
             // SliverPadding(
             //     padding:

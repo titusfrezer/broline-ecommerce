@@ -10,8 +10,7 @@ import 'package:broline/Pages/HomePage.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
-  runApp(
-      MaterialApp(
+  runApp(MaterialApp(
     home: Broline(),
   ));
 }
@@ -30,28 +29,18 @@ class _BrolineState extends State<Broline> {
 
   List<BottomNavigationBarItem> buildBottomNavBarItems() {
     return [
+      BottomNavigationBarItem(icon: Icon(Icons.home), label: "Home"),
       BottomNavigationBarItem(
-          icon:  Icon(Icons.home),
-          label:  "Home"
+        icon: Icon(Icons.favorite_outline_rounded),
+        label: "Favorite",
       ),
       BottomNavigationBarItem(
-        icon:  Icon(Icons.favorite_outline_rounded),
-        label:  "Favorite",
-      ),
-      BottomNavigationBarItem(
-          icon: Icon(Icons.add_box_outlined),
-          label: "Sell"
-      ),
-      BottomNavigationBarItem(
-          icon: Icon(Icons.message),
-          label: "Message"
-      ),
-      BottomNavigationBarItem(
-          icon: Icon(Icons.person),
-          label: "Profile"
-      )
+          icon: Icon(Icons.add_box_outlined), label: "Sell"),
+      BottomNavigationBarItem(icon: Icon(Icons.message), label: "Message"),
+      BottomNavigationBarItem(icon: Icon(Icons.person), label: "Profile")
     ];
   }
+
   PageController pageController = PageController(
     initialPage: 0,
     keepPage: true,
@@ -64,12 +53,15 @@ class _BrolineState extends State<Broline> {
         pageChanged(index);
       },
       children: <Widget>[
-       HomePage(),
-        SubCategoryPage(categoryName: "",),
-        SellProduct(),
-        SubCategoryPage(categoryName: "",),
         HomePage(),
-
+        SubCategoryPage(
+          categoryName: "",
+        ),
+        SellProduct(),
+        SubCategoryPage(
+          categoryName: "",
+        ),
+        HomePage(),
       ],
     );
   }
@@ -94,14 +86,14 @@ class _BrolineState extends State<Broline> {
   void bottomTapped(int index) {
     setState(() {
       bottomSelectedIndex = index;
-      pageController.animateToPage(index, duration: Duration(milliseconds: 500), curve: Curves.ease);
+      pageController.animateToPage(index,
+          duration: Duration(milliseconds: 500), curve: Curves.ease);
     });
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-
       body: buildPageView(),
       bottomNavigationBar: BottomNavigationBar(
         showUnselectedLabels: true,
@@ -116,5 +108,3 @@ class _BrolineState extends State<Broline> {
     );
   }
 }
-
-
