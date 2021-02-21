@@ -1,9 +1,11 @@
 import 'package:broline/Models/Category.dart';
 import 'package:broline/Models/Colors.dart';
-import 'package:broline/Models/DropDownItems.dart';
+import 'package:broline/Models/DropDownItemsList.dart';
 import 'package:broline/Models/Category.dart';
 import 'package:broline/Models/Lists.dart';
 import 'package:broline/Pages/CateogryAlternative.dart';
+import 'package:broline/Pages/HouseCategoryPage.dart';
+import 'package:broline/Pages/SellForm.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:broline/Models/Entry.dart';
@@ -31,10 +33,18 @@ class _SellProductState extends State<SellProduct> {
           itemBuilder: (BuildContext context, int index) {
             return InkWell(
               onTap: () {
-                Navigator.of(context)
-                    .push(MaterialPageRoute(builder: (BuildContext context) {
-                  return CategoryAlternative(Lists.categoryList[index].categoryName);
-                }));
+                if(Lists.categoryList[index].categoryName == "House"){
+                  Navigator.of(context)
+                      .push(MaterialPageRoute(builder: (BuildContext context) {
+                    return HouseCategoryPage();
+                  }));
+                }else{
+                  Navigator.of(context)
+                      .push(MaterialPageRoute(builder: (BuildContext context) {
+                    return SellForm(Lists.categoryList[index].categoryName);
+                  }));
+                }
+
               },
               child: Container(
                   color: BrolineColor.brolineDarkOrange,
@@ -46,6 +56,7 @@ class _SellProductState extends State<SellProduct> {
           itemCount: Lists.categoryList.length),
     );
   }
+
 // String selectedButtonValue;
 // String hint = "Select Category";
 // final List<DropdownMenuItem<String>> dropDownMenuItems = DropDownItems.items
@@ -119,42 +130,42 @@ class _SellProductState extends State<SellProduct> {
 
 // Data to display.
 
-class EntryItem extends StatelessWidget {
-  const EntryItem(this.entry);
-
-  final Entry entry;
-
-  Widget _buildTiles(Entry root) {
-    if (root.children.isEmpty)
-      return Container(
-        margin: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
-        height: 50,
-        width: double.maxFinite,
-        padding: EdgeInsets.symmetric(horizontal: 15, vertical: 3),
-        decoration: BoxDecoration(
-          color: BrolineColor.brolineLightGrey,
-          borderRadius: BorderRadius.circular(5),
-        ),
-        child: TextFormField(
-          decoration: InputDecoration(
-            border: InputBorder.none,
-            focusedBorder: InputBorder.none,
-            enabledBorder: InputBorder.none,
-            errorBorder: InputBorder.none,
-            disabledBorder: InputBorder.none,
-          ),
-        ),
-      );
-    return ExpansionTile(
-      // key: PageStorageKey<Entry>(root),
-      title: Text(root.title),
-
-      children: root.children.map(_buildTiles).toList(),
-    );
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return _buildTiles(entry);
-  }
-}
+// class EntryItem extends StatelessWidget {
+//   const EntryItem(this.entry);
+//
+//   final Entry entry;
+//
+//   Widget _buildTiles(Entry root) {
+//     if (root.children.isEmpty)
+//       return Container(
+//         margin: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+//         height: 50,
+//         width: double.maxFinite,
+//         padding: EdgeInsets.symmetric(horizontal: 15, vertical: 3),
+//         decoration: BoxDecoration(
+//           color: BrolineColor.brolineLightGrey,
+//           borderRadius: BorderRadius.circular(5),
+//         ),
+//         child: TextFormField(
+//           decoration: InputDecoration(
+//             border: InputBorder.none,
+//             focusedBorder: InputBorder.none,
+//             enabledBorder: InputBorder.none,
+//             errorBorder: InputBorder.none,
+//             disabledBorder: InputBorder.none,
+//           ),
+//         ),
+//       );
+//     return ExpansionTile(
+//       // key: PageStorageKey<Entry>(root),
+//       title: Text(root.title),
+//
+//       children: root.children.map(_buildTiles).toList(),
+//     );
+//   }
+//
+//   @override
+//   Widget build(BuildContext context) {
+//     return _buildTiles(entry);
+//   }
+// }

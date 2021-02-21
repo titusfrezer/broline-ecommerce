@@ -1,4 +1,6 @@
-class DropDownItems{
+import 'package:flutter/material.dart';
+
+class DropDownItemsList extends DropdownMenuItem{
   static const items = <String>[
     "House",
     "Vehicle",
@@ -28,6 +30,7 @@ class DropDownItems{
   static const houseList = <String>[
     "Free Area",
     "House",
+    "Hall",
     "Condominium",
     "Store"
   ];
@@ -79,6 +82,43 @@ class DropDownItems{
     "Construction Machinery",
     "Large Vehicles",
     "Others"
+  ];
+  static const serviceType =<String>[
+    "Order",
+    "Reservation"
+  ];
+  static const quantity = <String>[
+    "For organization",
+    "For Personal"
+  ];
+  static const paymentMethod =<String>[
+    "CBE",
+    "Hello Cash",
+    "Awash Bank"
+  ];
+  static const alternative = <String> [
+    "Buy",
+    "Rent"
+  ];
+  static const negotiation = <String> [
+    "Negotiable",
+    "Fixed"
+  ];
+
+  static const status = <String> [
+    "Repair",
+    "No Repair"
+  ];
+  static const purpose = <String> [
+    "Meting",
+    "Wedding",
+    "BirthDay",
+    "Graduation"
+  ];
+  static const newOld = <String> [
+    "New",
+    "Used",
+
   ];
 
 }
