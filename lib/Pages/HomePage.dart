@@ -41,7 +41,7 @@ class _HomePageState extends State<HomePage> {
                   child: IconButton(
                       icon: Icon(
                         Icons.shopping_cart,
-                        color: BrolineColor.brolineDarkOrange,
+                        color: BrolineColor.brolineDarkBlue,
                         size: 30,
                       ),
                       onPressed: () {}),
@@ -65,8 +65,9 @@ class _HomePageState extends State<HomePage> {
                       animationDuration: Duration(seconds: 5),
                       autoplayDuration: Duration(seconds: 10),
                       dotSize: 6.0,
-                      dotIncreasedColor: BrolineColor.brolineDarkOrange,
+                      dotIncreasedColor: BrolineColor.brolineDarkYellow,
                       dotBgColor: Colors.transparent,
+                      dotColor: BrolineColor.brolineLightYellow,
                       dotPosition: DotPosition.bottomCenter,
                       dotVerticalPadding: 10.0,
                       showIndicator: true,
@@ -116,7 +117,7 @@ class _HomePageState extends State<HomePage> {
                             disabledBorder: InputBorder.none,
                             icon: Icon(
                               Icons.search,
-                              color: BrolineColor.brolineDarkGrey,
+                              color: BrolineColor.brolineDarkYellow,
                             ),
                             hintText: 'Search Product',
                             hintStyle: TextStyle(fontSize: 18),
@@ -197,7 +198,7 @@ class _HomePageState extends State<HomePage> {
                             Text(
                               "Omen Galaxy S10",
                               style: TextStyle(
-                                  color: BrolineColor.brolineDarkGrey,
+                                  color: BrolineColor.brolineBlack,
                                   fontWeight: FontWeight.bold,
                                   fontSize: 17),
                               maxLines: 2,
@@ -211,7 +212,7 @@ class _HomePageState extends State<HomePage> {
                                 padding: EdgeInsets.only(
                                     left: 20, top: 5, bottom: 5),
                                 decoration: BoxDecoration(
-                                    color: BrolineColor.brolineDarkOrange,
+                                    color: BrolineColor.brolineDarkBlue,
                                     borderRadius: BorderRadius.only(
                                         topLeft: Radius.elliptical(50, 35),
                                         bottomLeft: Radius.circular(100))),
@@ -225,12 +226,13 @@ class _HomePageState extends State<HomePage> {
                               title: Text(
                                 "\$300",
                                 style: TextStyle(
-                                    color: BrolineColor.brolineDarkOrange,
+                                    color: BrolineColor.brolineDarkBlue,
                                     fontWeight: FontWeight.w700),
                               ),
                               subtitle: Text(
                                 "\$350",
                                 style: TextStyle(
+                                    color: BrolineColor.brolineDarkYellow,
                                     decoration: TextDecoration.lineThrough),
                               ),
                             )
@@ -258,7 +260,7 @@ class _HomePageState extends State<HomePage> {
           color: BrolineColor.brolineLightGrey,
           child: Text(
             "Categories",
-            style: TextStyle(fontSize: 20),
+            style: TextStyle(fontSize: 20 ,color: BrolineColor.brolineDarkYellow),
           ),
         ),
         Container(
@@ -278,27 +280,29 @@ class _HomePageState extends State<HomePage> {
                   }));
                 },
                 child: Card(
-                  color: BrolineColor.brolineLightOrange,
+
+                  color: BrolineColor.brolineLightBlue,
                   shape: RoundedRectangleBorder(
                     side: BorderSide(
-                        color: BrolineColor.brolineDarkOrange, width: 0.25),
+                        color: BrolineColor.brolineLightBlue, width: 0.25),
                     borderRadius: BorderRadius.all(Radius.circular(16)),
                   ),
                   child: Container(
                     width: 80,
+                    padding: EdgeInsets.symmetric(horizontal: 5),
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.spaceAround,
                       children: [
                         Icon(
                           Icons.category,
-                          color: BrolineColor.brolineDarkOrange,
+                          color: BrolineColor.brolineDarkBlue,
                         ),
                         Text(
                           Lists.categoryList[index].categoryName,
                           maxLines: 1,
                           overflow: TextOverflow.ellipsis,
                           style: TextStyle(
-                              color: BrolineColor.brolineDarkOrange,
+                              color: BrolineColor.brolineWhite,
                               fontWeight: FontWeight.bold),
                         )
                       ],
@@ -313,7 +317,7 @@ class _HomePageState extends State<HomePage> {
           alignment: Alignment.bottomRight,
           child: FlatButton(
             onPressed: () {},
-            child: Text("See More"),
+            child: Text("See More",style: TextStyle(fontStyle: FontStyle.italic,color: BrolineColor.brolineLightBlue),),
           ),
         )
       ],
@@ -334,7 +338,7 @@ class _HomePageState extends State<HomePage> {
             padding: EdgeInsets.only(left: 20, right: 10, top: 20),
             child: Text(
               "Recent Products",
-              style: TextStyle(fontSize: 22, fontWeight: FontWeight.w600),
+              style: TextStyle(fontSize: 22,color: BrolineColor.brolineDarkYellow, fontWeight: FontWeight.w600),
             ),
           ),
           Expanded(
@@ -375,7 +379,7 @@ class _HomePageState extends State<HomePage> {
                               Text(
                                 "Omen Galaxy S10",
                                 style: TextStyle(
-                                    color: BrolineColor.brolineDarkGrey,
+                                    color: BrolineColor.brolineBlack,
                                     fontWeight: FontWeight.bold,
                                     fontSize: 17),
                                 maxLines: 2,
@@ -389,7 +393,7 @@ class _HomePageState extends State<HomePage> {
                                   padding: EdgeInsets.only(
                                       left: 20, top: 5, bottom: 5),
                                   decoration: BoxDecoration(
-                                      color: BrolineColor.brolineDarkOrange,
+                                      color: BrolineColor.brolineDarkBlue,
                                       borderRadius: BorderRadius.only(
                                           topLeft: Radius.elliptical(50, 35),
                                           bottomLeft: Radius.circular(100))),
@@ -403,12 +407,13 @@ class _HomePageState extends State<HomePage> {
                                 title: Text(
                                   "\$300",
                                   style: TextStyle(
-                                      color: BrolineColor.brolineDarkOrange,
+                                      color: BrolineColor.brolineDarkBlue,
                                       fontWeight: FontWeight.w700),
                                 ),
                                 subtitle: Text(
                                   "\$350",
                                   style: TextStyle(
+                                    color: BrolineColor.brolineDarkYellow,
                                       decoration: TextDecoration.lineThrough),
                                 ),
                               )

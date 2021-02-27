@@ -475,7 +475,7 @@ class _SellFormState extends State<SellForm> {
           disabledBorder: InputBorder.none,
           icon: Icon(
             icon,
-            color: BrolineColor.brolineDarkGrey,
+            color: BrolineColor.brolineDarkBlue,
           ),
           hintText: hintText,
           hintStyle: TextStyle(fontSize: 18),
@@ -765,7 +765,8 @@ class _SellFormState extends State<SellForm> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text("Post Ad")),
+      appBar: AppBar(title: Text("Post Ad"),
+      backgroundColor: BrolineColor.brolineDarkBlue,),
       body: _buildFormList(),
     );
   }

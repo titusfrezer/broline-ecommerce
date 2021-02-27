@@ -22,7 +22,7 @@ class _SubCategoryPageState extends State<SubCategoryPage> {
     return IconButton(
         icon: Icon(
           Icons.search,
-          color: BrolineColor.brolineDarkGrey,
+          color: BrolineColor.brolineLightBlue,
         ),
         onPressed: () {
           setState(() {
@@ -37,7 +37,7 @@ class _SubCategoryPageState extends State<SubCategoryPage> {
                       decoration: InputDecoration(
                     icon: Icon(
                       Icons.search,
-                      color: BrolineColor.brolineDarkGrey,
+                      color: BrolineColor.brolineLightBlue,
                     ),
                     hintText: 'Search Category',
                     hintStyle: TextStyle(fontSize: 18),
@@ -46,7 +46,7 @@ class _SubCategoryPageState extends State<SubCategoryPage> {
             } else {
               title = Text(
                 widget.categoryName,
-                style: TextStyle(color: BrolineColor.brolineDarkGrey),
+                style: TextStyle(color: BrolineColor.brolineDarkBlue),
               );
               isSterched = true;
             }
@@ -62,14 +62,14 @@ class _SubCategoryPageState extends State<SubCategoryPage> {
     backArrow = IconButton(
         icon: Icon(
           Icons.arrow_back_ios_outlined,
-          color: BrolineColor.brolineDarkGrey,
+          color: BrolineColor.brolineDarkBlue,
         ),
         onPressed: () {
           setState(() {
             if (isSterched == true) {
               title = Text(
                 widget.categoryName,
-                style: TextStyle(color: BrolineColor.brolineDarkGrey),
+                style: TextStyle(color: BrolineColor.brolineDarkBlue),
               );
               isSterched = false;
             } else {
@@ -80,7 +80,7 @@ class _SubCategoryPageState extends State<SubCategoryPage> {
     search = _buildSearch(false);
     title = Text(
       widget.categoryName,
-      style: TextStyle(color: BrolineColor.brolineDarkGrey),
+      style: TextStyle(color: BrolineColor.brolineDarkBlue),
     );
     super.initState();
   }
@@ -109,7 +109,7 @@ class _SubCategoryPageState extends State<SubCategoryPage> {
                             decoration: InputDecoration(
                           icon: Icon(
                             Icons.search,
-                            color: BrolineColor.brolineDarkGrey,
+                            color: BrolineColor.brolineDarkBlue,
                           ),
                           hintText: 'Search Category',
                           hintStyle: TextStyle(fontSize: 18),
@@ -118,7 +118,7 @@ class _SubCategoryPageState extends State<SubCategoryPage> {
                         ? Text(
                             widget.categoryName,
                             style:
-                                TextStyle(color: BrolineColor.brolineDarkGrey),
+                                TextStyle(color: BrolineColor.brolineDarkBlue),
                           )
                         : Container(
                             width: double.maxFinite,
@@ -131,7 +131,7 @@ class _SubCategoryPageState extends State<SubCategoryPage> {
                                 decoration: InputDecoration(
                               icon: Icon(
                                 Icons.search,
-                                color: BrolineColor.brolineDarkGrey,
+                                color: BrolineColor.brolineDarkBlue,
                               ),
                               hintText: 'Search Category',
                               hintStyle: TextStyle(fontSize: 18),
@@ -148,7 +148,7 @@ class _SubCategoryPageState extends State<SubCategoryPage> {
                 leading: IconButton(
                     icon: Icon(
                       Icons.arrow_back_ios_outlined,
-                      color: BrolineColor.brolineDarkGrey,
+                      color: BrolineColor.brolineDarkBlue,
                     ),
                     onPressed: () {
                       setState(() {
@@ -156,7 +156,7 @@ class _SubCategoryPageState extends State<SubCategoryPage> {
                           title = Text(
                             widget.categoryName,
                             style:
-                                TextStyle(color: BrolineColor.brolineDarkGrey),
+                                TextStyle(color: BrolineColor.brolineDarkBlue),
                           );
                           isSterched = false;
                         } else {
@@ -167,34 +167,6 @@ class _SubCategoryPageState extends State<SubCategoryPage> {
               ),
             ),
 
-            // SliverPadding(
-            //     padding:
-            //         EdgeInsets.only(top: 10, right: 10, left: 10, bottom: 10),
-            //     sliver: SliverAppBar(
-            //       pinned: true,
-            //       floating: true,
-            //       elevation: 0.0,
-            //       backgroundColor: BrolineColor.brolineWhite,
-            //       leading: innerBoxScrolled == true ? backArrow : SizedBox() ,
-            //       title: Container(
-            //           width: double.maxFinite,
-            //           padding:
-            //               EdgeInsets.symmetric(horizontal: 15, vertical: 3),
-            //           decoration: BoxDecoration(
-            //               color: BrolineColor.brolineLightGrey,
-            //               borderRadius: BorderRadius.circular(16)),
-            //           child: TextFormField(
-            //               decoration: InputDecoration(
-            //             icon: Icon(
-            //               Icons.search,
-            //               color: BrolineColor.brolineDarkGrey,
-            //             ),
-            //             hintText: 'Search Category',
-            //             hintStyle: TextStyle(fontSize: 18),
-            //           ))),
-            //       stretch: true,
-            //       automaticallyImplyLeading: false,
-            //     )),
           ];
         },
         body: CustomScrollView(
@@ -208,7 +180,7 @@ class _SubCategoryPageState extends State<SubCategoryPage> {
                     padding: EdgeInsets.symmetric(vertical: 20),
                     child: Container(
                       decoration: BoxDecoration(
-                          color: BrolineColor.brolineDarkOrange,
+                          color: BrolineColor.brolineDarkBlue,
                           borderRadius: BorderRadius.circular(15),
                           image: DecorationImage(
                             image: AssetImage('assets/images/laptop.jfif'),

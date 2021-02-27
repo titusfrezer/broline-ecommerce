@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:broline/Models/Category.dart';
 import 'package:broline/Models/Colors.dart';
 import 'package:broline/Models/DropDownItemsList.dart';
@@ -16,36 +18,68 @@ class SellProduct extends StatefulWidget {
 }
 
 class _SellProductState extends State<SellProduct> {
-
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
     return Scaffold(
       appBar: AppBar(
-        title: Text("Select Category"),
+        backgroundColor: BrolineColor.brolineDarkBlue,
+        title: Text(
+          "Pick Category",
+          style: TextStyle(color: BrolineColor.brolineWhite),
+        ),
       ),
       body: ListView.builder(
           itemBuilder: (BuildContext context, int index) {
             return InkWell(
               onTap: () {
-                if(Lists.categoryList[index].categoryName == "House"){
+                if (Lists.categoryList[index].categoryName == "House") {
                   Navigator.of(context)
                       .push(MaterialPageRoute(builder: (BuildContext context) {
                     return HouseCategoryPage();
                   }));
-                }else{
+                } else {
                   Navigator.of(context)
                       .push(MaterialPageRoute(builder: (BuildContext context) {
                     return SellForm(Lists.categoryList[index].categoryName);
                   }));
                 }
-
               },
               child: Container(
-                  color: BrolineColor.brolineDarkOrange,
-                  height: 50,
-                  margin: EdgeInsets.only(bottom: 5),
-                  child: Text(Lists.categoryList[index].categoryName)),
+                margin: EdgeInsets.only(bottom: 2.5),
+                height: 100,
+                width: double.maxFinite,
+                child: Stack(
+                  fit: StackFit.expand,
+                  children: [
+                    Container(
+                        child: Container(),
+                        decoration: BoxDecoration(
+                            image: DecorationImage(
+                          image: AssetImage(
+                            Lists.categoryList[index].categoryImage,
+                          ),
+                          fit: BoxFit.cover,
+                              colorFilter: ColorFilter.mode(Colors.black.withOpacity(0.4), BlendMode.darken)
+                        ))),
+                    ClipRRect(
+                        child: BackdropFilter(
+                      filter: ImageFilter.blur(sigmaX: 2, sigmaY: 2),
+                      child: Padding(
+                        padding: const EdgeInsets.symmetric(
+                            horizontal: 15, vertical: 15),
+                        child: Text(
+                          Lists.categoryList[index].categoryName,
+                          style: TextStyle(
+                              color: BrolineColor.brolineWhite,
+                              fontWeight: FontWeight.w700,
+                              fontSize: 25),
+                        ),
+                      ),
+                    ))
+                  ],
+                ),
+              ),
             );
           },
           itemCount: Lists.categoryList.length),

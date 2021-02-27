@@ -53,7 +53,18 @@ flutter:
   assets:
     - assets/images/broline.jfif
     - assets/images/brolineSplashCroped.jpg
-    - assets/images/laptop.jfif
+    - assets/images/construction.jpeg
+    - assets/images/drug.jpeg
+    - assets/images/electronics.jpeg
+    - assets/images/entertainment.jpeg
+    - assets/images/food.jpeg
+    - assets/images/house.jpeg
+    - assets/images/jewelery.jpeg
+    - assets/images/job.jpeg
+    - assets/images/office.jpeg
+    - assets/images/other.jpeg
+    - assets/images/pets.jpeg
+    - assets/images/vehicle.jpeg
   #   - images/a_dot_ham.jpe    - assets/images/brolineSplashCroped.jpgg
 
   # An image asset can refer to one or more resolution-specific "variants", see

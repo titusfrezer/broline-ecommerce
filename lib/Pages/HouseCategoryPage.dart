@@ -23,7 +23,7 @@ class HouseCategoryPage extends StatelessWidget {
 
           },
           child: Container(
-              color: BrolineColor.brolineDarkOrange,
+              color: BrolineColor.brolineDarkBlue,
               height: 50,
               margin: EdgeInsets.only(bottom: 5),
               child: Text(DropDownItemsList.houseList[index])),

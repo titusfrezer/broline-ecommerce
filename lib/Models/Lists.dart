@@ -2,18 +2,21 @@ import 'package:broline/Models/Category.dart';
 
 class Lists {
   static List<Category> categoryList = [
-    Category("House", "House"),
-    Category("Vehicle", "House"),
-    Category("Electronics", "House"),
-    Category("Office and House Holds", "House"),
-    Category("Clothes and Jewelery", "House"),
-    Category("Construction Materials", "House"),
-    Category("Job", "House"),
-    Category("Food and Beverage", "House"),
-    Category("Pets", "House"),
-    Category("Entertainment Service", "House"),
-    Category("Drugs", "House"),
-    Category("Others", "House"),
+    Category("House", "assets/images/house.jpeg"),
+    Category("Vehicle", "assets/images/vehicle.jpeg"),
+    Category("Electronics", "assets/images/electronics.jpeg"),
+    Category("Office and House Holds", "assets/images/office.jpeg"),
+    Category("Clothes and Jewelery", "assets/images/jewelery.jpeg"),
+    Category("Construction Materials", "assets/images/construction.jpeg"),
+    Category("Job", "assets/images/job.jpeg"),
+    Category("Food and Beverage", "assets/images/food.jpeg"),
+    Category("Pets", "assets/images/pets.jpeg"),
+    Category("Entertainment Service", "assets/images/entertainment.jpeg"),
+    Category("Drugs", "assets/images/drug.jpeg"),
+    Category("Others", "assets/images/other.jpeg"),
+  ];
+  static List<Category> house = [
+
   ];
   static final List<String> imgList = [
     'https://images.unsplash.com/photo-1520342868574-5fa3804e551c?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=6ff92caffcdd63681a35134a6770ed3b&auto=format&fit=crop&w=1951&q=80',

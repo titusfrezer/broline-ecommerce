@@ -97,8 +97,8 @@ class _BrolineState extends State<Broline> {
       body: buildPageView(),
       bottomNavigationBar: BottomNavigationBar(
         showUnselectedLabels: true,
-        unselectedItemColor: BrolineColor.brolineDarkGrey,
-        selectedItemColor: BrolineColor.brolineDarkOrange,
+        unselectedItemColor: BrolineColor.brolineDarkYellow,
+        selectedItemColor: BrolineColor.brolineDarkBlue,
         currentIndex: bottomSelectedIndex,
         onTap: (index) {
           bottomTapped(index);
