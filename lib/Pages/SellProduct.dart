@@ -17,11 +17,6 @@ class SellProduct extends StatefulWidget {
 
 class _SellProductState extends State<SellProduct> {
 
-
-  // Widget buildCategory(){
-  //   if
-  //   return Text("");
-  // }
   @override
   Widget build(BuildContext context) {
     // TODO: implement build

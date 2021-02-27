@@ -10,25 +10,29 @@ class HouseSellOrBuy extends StatelessWidget {
         appBar: AppBar(
           title: Text("House"),
         ),
-        body: Row(
-          children: [
-            InkWell(
-              child: Text("Sell"),
-              onTap: () {
-                Navigator.of(context).push(MaterialPageRoute(builder: (BuildContext context){
-                  return SellForm("Sell");
-                }));
-              },
-            ),
-            InkWell(
-              child: Text("Rent"),
-              onTap: () {
-                Navigator.of(context).push(MaterialPageRoute(builder: (BuildContext context){
-                  return SellForm("Rent");
-                }));
-              },
-            ),
-          ],
+        body: Center(
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            children: [
+
+              InkWell(
+                child: Text("Sell"),
+                onTap: () {
+                  Navigator.of(context).push(MaterialPageRoute(builder: (BuildContext context){
+                    return SellForm("Sell");
+                  }));
+                },
+              ),
+              InkWell(
+                child: Text("Rent"),
+                onTap: () {
+                  Navigator.of(context).push(MaterialPageRoute(builder: (BuildContext context){
+                    return SellForm("Rent");
+                  }));
+                },
+              ),
+            ],
+          ),
         ));
   }
 }

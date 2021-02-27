@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-class DropDownItemsList extends DropdownMenuItem{
+class DropDownItemsList {
   static const items = <String>[
     "House",
     "Vehicle",
@@ -13,7 +13,7 @@ class DropDownItemsList extends DropdownMenuItem{
     "Pets",
     "Entertainment Service",
     "Drugs",
-    "Others"
+    "Others",
   ];
   static const electronicsList = <String>[
     "Computer",
@@ -76,49 +76,32 @@ class DropDownItemsList extends DropdownMenuItem{
     "Others"
   ];
   static const engineStatus = <String>[
-    "Car",
-    "Motor Cycle",
-    "Bajaj",
-    "Construction Machinery",
-    "Large Vehicles",
-    "Others"
+    "Repaired",
+    "Partial Repair",
+    "Full Repair",
   ];
-  static const serviceType =<String>[
-    "Order",
-    "Reservation"
-  ];
-  static const quantity = <String>[
-    "For organization",
-    "For Personal"
-  ];
-  static const paymentMethod =<String>[
-    "CBE",
-    "Hello Cash",
-    "Awash Bank"
-  ];
-  static const alternative = <String> [
-    "Buy",
-    "Rent"
-  ];
-  static const negotiation = <String> [
-    "Negotiable",
-    "Fixed"
-  ];
+  static const goodsStatus = <String>["New", "Slightly Used", "Un repaired"];
+  static const serviceType = <String>["Order", "Reservation"];
+  static const petSex = <String>["Male", "Female"];
+  static const petAge = <String>["0-3 Year", "4-10 Year", "11-20 Year"];
+  static const whatToServe = <String>["Food", "Drinks"];
+  static const vaccinated = <String>["Vaccinated", "Not Vaccinated"];
+  static const quantity = <String>["For organization", "For Personal"];
+  static const paymentMethod = <String>["CBE", "Hello Cash", "Awash Bank"];
+  static const alternative = <String>["Sell", "Rent"];
+  static const negotiation = <String>["Negotiable", "Fixed"];
 
-  static const status = <String> [
-    "Repair",
-    "No Repair"
-  ];
-  static const purpose = <String> [
+  static const status = <String>["Repair", "No Repair"];
+  static const purpose = <String>[
     "Meting",
     "Wedding",
     "BirthDay",
     "Graduation"
+        "Other"
   ];
-  static const newOld = <String> [
+  static const newOld = <String>[
     "New",
     "Used",
-
   ];
-
+  static const constructionList = <String>[];
 }
