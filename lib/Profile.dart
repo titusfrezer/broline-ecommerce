@@ -17,7 +17,7 @@ class Profile extends StatelessWidget {
         stream: addProfile.onValue,
         builder: (context, snapshot) {
           Map map = snapshot.data.snapshot.value;
-          return RaisedButton(child: Text('Add Profile'), onPressed: () {
+          return RaisedButton(child: Text('Update Profile'), onPressed: () {
             FirebaseDatabase.instance.reference().child(
                 "Users").child(map.keys.toList()[0]).update({
               'name': 'Titus',

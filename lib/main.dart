@@ -45,8 +45,12 @@ class HomeController extends StatelessWidget {
       stream: auth.onAuthStateChanged ,
       builder: (context,snapshot){
 
+        if (auth.isSigningIn){
+
+          return CircularProgressIndicator();
+        }
         if(snapshot.hasData){ // if user is currently signed in
-          return Home(auth.currentUser.phoneNumber);
+          return Home(auth.currentUser.phoneNumber!=null?auth.currentUser.phoneNumber:auth.currentUser.displayName);
         }
         return LoginPage();
       },
