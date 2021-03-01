@@ -34,6 +34,9 @@ dependencies:
   carousel_pro: ^1.0.0
   multi_image_picker: ^4.7.15
   splashscreen: ^1.3.5
+  firebase_core: ^0.7.0
+  provider:
+  google_sign_in:
 dev_dependencies:
   flutter_test:
     sdk: flutter
