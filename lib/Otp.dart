@@ -1,5 +1,5 @@
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:firebase_database/firebase_database.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 
 import 'Home.dart';
@@ -12,7 +12,7 @@ class Otp extends StatelessWidget {
   Widget build(BuildContext context) {
     TextEditingController controller = TextEditingController();
     FirebaseAuth _auth = FirebaseAuth.instance;
-    DatabaseReference userRef = FirebaseDatabase.instance.reference().child("Users");
+    CollectionReference userRef = FirebaseFirestore.instance.collection("users");
     return Scaffold(
       appBar: AppBar(
         title: Text('OTP'),
@@ -33,26 +33,30 @@ class Otp extends StatelessWidget {
 
               AuthCredential _credential = PhoneAuthProvider.credential(verificationId: verificationId, smsCode: controller.text);
               UserCredential result = await _auth.signInWithCredential(_credential);
-              userRef.once().then((DataSnapshot snapshot) {
-                var key = snapshot.value.keys;
-                var DATA = snapshot.value;
-                for (var individualkey in key) {
-                  if (result.user.phoneNumber == DATA[individualkey]['phoneno']) {
-                    print("user Exist");
-                    Navigator.pushReplacement(context, MaterialPageRoute(
-                        builder: (context) => Home(result.user.phoneNumber)
-                    ));
-                  }else{
-                    DatabaseReference addProfile = FirebaseDatabase.instance.reference().child("Users");
-                    addProfile.push().set(<dynamic,dynamic>{
-                      'name':'Titus',
-                      'phoneno':FirebaseAuth.instance.currentUser.phoneNumber
+              userRef.get().then((snapshot) {
+                snapshot.docs.forEach((element) {
+                  if (result.additionalUserInfo.isNewUser) {
+                    CollectionReference addProfile = FirebaseFirestore
+                        .instance
+                        .collection("users");
+
+                    addProfile.add({
+                      'name': 'Titus',
+                      'phoneno': FirebaseAuth
+                          .instance.currentUser.phoneNumber
                     });
-                    Navigator.pushReplacement(context, MaterialPageRoute(
-                        builder: (context) =>Profile()
-                    ));
+                    Navigator.of(context).pushReplacement(
+                        MaterialPageRoute(
+                            builder: (context) => Profile()));
                   }
-                }});
+                  else {
+                    Navigator.of(context).pushReplacement(
+                        MaterialPageRoute(
+                            builder: (context) =>
+                                Home(result.user.phoneNumber)));
+                  }
+                });
+              });
             },
           )
         ],

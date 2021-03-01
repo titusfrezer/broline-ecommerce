@@ -1,6 +1,7 @@
 import 'package:broline/Home.dart';
 import 'package:broline/LoginPage.dart';
 import 'package:broline/Models/Colors.dart';
+import 'package:broline/Pages/Broline.dart';
 import 'package:broline/Pages/SellProduct.dart';
 import 'package:broline/Pages/SubCategoryPage.dart';
 import 'package:flutter/material.dart';
@@ -44,11 +45,9 @@ class HomeController extends StatelessWidget {
             child:CircularProgressIndicator()
           );
         }
-       else if (snapshot.hasData) {
+        if (snapshot.hasData) {
           // if user is currently signed in
-          return Home(auth.currentUser.phoneNumber != null
-              ? auth.currentUser.phoneNumber
-              : auth.currentUser.displayName);
+          return Broline();
         }else{
           return LoginPage();
         }

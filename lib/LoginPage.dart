@@ -1,6 +1,6 @@
 import 'package:broline/Providers/AuthProvider.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:firebase_database/firebase_database.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -10,9 +10,7 @@ import 'Profile.dart';
 
 class LoginPage extends StatelessWidget {
   TextEditingController _codeController = TextEditingController();
-  DatabaseReference userRef =
-      FirebaseDatabase.instance.reference().child("Users");
-  int counter = 0;
+  CollectionReference userRef = FirebaseFirestore.instance.collection("users");
 
   @override
   Widget build(BuildContext context) {
@@ -36,37 +34,31 @@ class LoginPage extends StatelessWidget {
                       try {
                         UserCredential result =
                             await _auth.signInWithCredential(authCredential);
-                        userRef.once().then((DataSnapshot snapshot) {
-                          var key = snapshot.value.keys;
-                          var DATA = snapshot.value;
-                          for (var individualkey in key) {
-                            if (result.user.phoneNumber ==
-                                DATA[individualkey]['phoneno']) {
-                              counter++;
-                              print("user Exist");
+                        userRef.get().then((snapshot) {
+                          snapshot.docs.forEach((element) {
+                            if (result.additionalUserInfo.isNewUser) {
+                              CollectionReference addProfile = FirebaseFirestore
+                                  .instance
+                                  .collection("users");
+
+                              addProfile.add({
+                                'name': 'Titus',
+                                'phoneno': FirebaseAuth
+                                    .instance.currentUser.phoneNumber
+                              });
+                              Navigator.of(context).pushReplacement(
+                                  MaterialPageRoute(
+                                      builder: (context) => Profile()));
                             }
-                          }
-                        });
-                        print("counter is $counter");
-                        if (counter == 0) {
-                          DatabaseReference addProfile = FirebaseDatabase
-                              .instance
-                              .reference()
-                              .child("Users");
-                          addProfile.push().set(<dynamic, dynamic>{
-                            'name': 'Titus',
-                            'phoneno':
-                                FirebaseAuth.instance.currentUser.phoneNumber
+                            else {
+                              Navigator.of(context).pushReplacement(
+                                  MaterialPageRoute(
+                                      builder: (context) =>
+                                          Home(result.user.phoneNumber)));
+                            }
                           });
-                          Navigator.of(context).pushReplacement(
-                              MaterialPageRoute(
-                                  builder: (context) => Profile()));
-                        } else {
-                          Navigator.of(context).pushReplacement(
-                              MaterialPageRoute(
-                                  builder: (context) =>
-                                      Home(result.user.phoneNumber)));
-                        }
+                        });
+
                       } catch (e) {
                         print(e);
                       }
@@ -85,10 +77,12 @@ class LoginPage extends StatelessWidget {
                     });
               },
             ),
-            FlatButton(onPressed: () {
-              final auth = context.read<AuthProvider>();
-              auth.Login();
-            }, child: Text('Login with google')),
+            FlatButton(
+                onPressed: () {
+                  final auth = context.read<AuthProvider>();
+                  auth.Login();
+                },
+                child: Text('Login with google')),
           ],
         ),
       ),
