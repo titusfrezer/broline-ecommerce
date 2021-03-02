@@ -37,6 +37,7 @@ dependencies:
   provider:
   google_sign_in:
   cloud_firestore:
+  pin_code_fields:
 dev_dependencies:
   flutter_test:
     sdk: flutter
@@ -68,6 +69,9 @@ flutter:
     - assets/images/other.jpeg
     - assets/images/pets.jpeg
     - assets/images/vehicle.jpeg
+    - assets/images/brolineLogo.jpg
+    - assets/images/google.png
+    - assets/images/flag.jfif
   #   - images/a_dot_ham.jpe    - assets/images/brolineSplashCroped.jpgg
 
   # An image asset can refer to one or more resolution-specific "variants", see
