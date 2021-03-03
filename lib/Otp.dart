@@ -76,6 +76,10 @@ class Otp extends StatelessWidget {
                   fieldWidth: 40,
                 ),
                 cursorColor: Colors.black,
+
+                onCompleted: (value){
+                  controller.text = value;
+                },
                 animationDuration: Duration(milliseconds: 300),
                 backgroundColor: Colors.transparent,
                 controller: controller,
@@ -91,30 +95,35 @@ class Otp extends StatelessWidget {
               textColor: BrolineColor.brolineWhite,
               color: BrolineColor.brolineDarkBlue,
               child: Text("Verify" , style: TextStyle(fontSize: 16),),
-              onPressed: () async {
-                AuthCredential _credential = PhoneAuthProvider.credential(
-                    verificationId: verificationId, smsCode: controller.text);
-                UserCredential result =
-                    await _auth.signInWithCredential(_credential);
-                userRef.get().then((snapshot) {
-                  snapshot.docs.forEach((element) {
-                    if (result.additionalUserInfo.isNewUser) {
-                      CollectionReference addProfile =
-                          FirebaseFirestore.instance.collection("users");
+                onPressed: () async {
+print("OTP is ${controller.text}");
+                  AuthCredential _credential = PhoneAuthProvider.credential(verificationId: verificationId, smsCode: controller.text);
+                  UserCredential result = await _auth.signInWithCredential(_credential);
+                  userRef.get().then((snapshot) {
+                    snapshot.docs.forEach((element) {
+                      if (result.additionalUserInfo.isNewUser) {
+                        CollectionReference addProfile = FirebaseFirestore
+                            .instance
+                            .collection("users");
 
-                      addProfile.add({
-                        'name': 'Titus',
-                        'phoneno': FirebaseAuth.instance.currentUser.phoneNumber
-                      });
-                      Navigator.of(context).pushReplacement(
-                          MaterialPageRoute(builder: (context) => Profile()));
-                    } else {
-                      Navigator.of(context).pushReplacement(MaterialPageRoute(
-                          builder: (context) => Broline()));
-                    }
+                        addProfile.add({
+                          'name': 'Titus',
+                          'phoneno': FirebaseAuth
+                              .instance.currentUser.phoneNumber
+                        });
+                        Navigator.of(context).pushReplacement(
+                            MaterialPageRoute(
+                                builder: (context) => Profile()));
+                      }
+                      else {
+                        Navigator.of(context).pushReplacement(
+                            MaterialPageRoute(
+                                builder: (context) =>
+                                   Broline()));
+                      }
+                    });
                   });
-                });
-              },
+                },
             ),
           )
         ],
