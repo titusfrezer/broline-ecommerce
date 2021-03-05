@@ -2,6 +2,7 @@ import 'package:broline/Models/Lists.dart';
 import 'package:broline/Pages/ProductDetailPage.dart';
 import 'package:broline/Pages/SubCategoryPage.dart';
 import 'package:carousel_pro/carousel_pro.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -28,25 +29,13 @@ class _HomePageState extends State<HomePage> {
         scrollDirection: Axis.vertical,
         floatHeaderSlivers: false,
         headerSliverBuilder: (BuildContext context, bool innerBoxScrolled) {
+          print(innerBoxScrolled);
           return <Widget>[
             SliverAppBar(
               elevation: 0.0,
               expandedHeight: 200,
               backgroundColor: BrolineColor.brolineWhite,
               centerTitle: true,
-              actions: [
-                Container(
-                  height: 60,
-                  padding: EdgeInsets.symmetric(horizontal: 10),
-                  child: IconButton(
-                      icon: Icon(
-                        Icons.shopping_cart,
-                        color: BrolineColor.brolineDarkBlue,
-                        size: 30,
-                      ),
-                      onPressed: () {}),
-                ),
-              ],
               flexibleSpace: LayoutBuilder(
                   builder: (BuildContext context, BoxConstraints constraints) {
                 return FlexibleSpaceBar(
@@ -260,53 +249,61 @@ class _HomePageState extends State<HomePage> {
           color: BrolineColor.brolineLightGrey,
           child: Text(
             "Categories",
-            style: TextStyle(fontSize: 20 ,color: BrolineColor.brolineDarkYellow),
+            style: TextStyle(
+                fontSize: 20,
+                fontWeight: FontWeight.w500,
+                color: BrolineColor.brolineBlack),
           ),
         ),
         Container(
-          padding: EdgeInsets.only(left: 10, top: 10),
-          height: 100,
+          padding: EdgeInsets.only(left: 10),
+          height: 125,
           child: ListView.builder(
             scrollDirection: Axis.horizontal,
-            itemCount: 7,
+            itemCount: Lists.categoryHorizontalList.length,
             itemBuilder: (BuildContext context, int index) {
               return InkWell(
                 onTap: () {
                   Navigator.of(context)
                       .push(MaterialPageRoute(builder: (BuildContext context) {
                     return SubCategoryPage(
-                      categoryName: "SubCategory",
-                    );
+                        categoryName:
+                            Lists.categoryHorizontalList[index].categoryName);
                   }));
                 },
-                child: Card(
-
-                  color: BrolineColor.brolineLightBlue,
-                  shape: RoundedRectangleBorder(
-                    side: BorderSide(
-                        color: BrolineColor.brolineLightBlue, width: 0.25),
-                    borderRadius: BorderRadius.all(Radius.circular(16)),
-                  ),
-                  child: Container(
-                    width: 80,
-                    padding: EdgeInsets.symmetric(horizontal: 5),
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.spaceAround,
-                      children: [
-                        Icon(
-                          Icons.category,
-                          color: BrolineColor.brolineDarkBlue,
+                child: Container(
+                  width: 75,
+                  margin: EdgeInsets.only(left: 15, right: 15, top: 25),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Container(
+                        width: 75,
+                        height: 75,
+                        decoration: BoxDecoration(
+                          border: Border.all(
+                              color: BrolineColor.brolineDarkYellow,
+                              width: 0.75),
+                          borderRadius: BorderRadius.all(Radius.circular(15)),
                         ),
-                        Text(
-                          Lists.categoryList[index].categoryName,
-                          maxLines: 1,
-                          overflow: TextOverflow.ellipsis,
-                          style: TextStyle(
-                              color: BrolineColor.brolineWhite,
-                              fontWeight: FontWeight.bold),
-                        )
-                      ],
-                    ),
+                        child: ClipRRect(
+                          borderRadius: BorderRadius.all(Radius.circular(15)),
+                          child: Image.asset(
+                            Lists.categoryHorizontalList[index].categoryImage,
+                            fit: BoxFit.cover,
+                          ),
+                        ),
+                      ),
+                      Text(
+                        Lists.categoryHorizontalList[index].categoryName,
+                        maxLines: 1,
+                        textAlign: TextAlign.center,
+                        overflow: TextOverflow.ellipsis,
+                        style: TextStyle(
+                            color: BrolineColor.brolineBlack,
+                            fontWeight: FontWeight.bold),
+                      )
+                    ],
                   ),
                 ),
               );
@@ -316,8 +313,21 @@ class _HomePageState extends State<HomePage> {
         Align(
           alignment: Alignment.bottomRight,
           child: FlatButton(
-            onPressed: () {},
-            child: Text("See More",style: TextStyle(fontStyle: FontStyle.italic,color: BrolineColor.brolineLightBlue),),
+            onPressed: () {
+              Navigator.of(context)
+                  .push(MaterialPageRoute(builder: (BuildContext context) {
+                return SubCategoryPage(
+                  categoryName: "All Categories",
+                  allSubCategory: Lists.allSubCategories,
+                );
+              }));
+            },
+            child: Text(
+              "See More",
+              style: TextStyle(
+                  fontStyle: FontStyle.italic,
+                  color: BrolineColor.brolineLightBlue),
+            ),
           ),
         )
       ],
@@ -338,7 +348,10 @@ class _HomePageState extends State<HomePage> {
             padding: EdgeInsets.only(left: 20, right: 10, top: 20),
             child: Text(
               "Recent Products",
-              style: TextStyle(fontSize: 22,color: BrolineColor.brolineDarkYellow, fontWeight: FontWeight.w600),
+              style: TextStyle(
+                  fontSize: 22,
+                  color: BrolineColor.brolineBlack,
+                  fontWeight: FontWeight.w600),
             ),
           ),
           Expanded(
@@ -413,7 +426,7 @@ class _HomePageState extends State<HomePage> {
                                 subtitle: Text(
                                   "\$350",
                                   style: TextStyle(
-                                    color: BrolineColor.brolineDarkYellow,
+                                      color: BrolineColor.brolineDarkYellow,
                                       decoration: TextDecoration.lineThrough),
                                 ),
                               )

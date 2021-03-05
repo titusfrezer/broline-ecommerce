@@ -1,16 +1,15 @@
 import 'dart:ui';
 
-import 'package:broline/Models/Category.dart';
-import 'package:broline/Models/Colors.dart';
-import 'package:broline/Models/DropDownItemsList.dart';
-import 'package:broline/Models/Category.dart';
-import 'package:broline/Models/Lists.dart';
-import 'package:broline/Pages/CateogryAlternative.dart';
-import 'package:broline/Pages/HouseCategoryPage.dart';
-import 'package:broline/Pages/SellForm.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:broline/Models/Entry.dart';
+
+
+import 'package:broline/Models/Colors.dart';
+import 'package:broline/Models/Lists.dart';
+import 'package:broline/Pages/HouseCategoryPage.dart';
+import 'package:broline/Pages/SellForm.dart';
+
+
 
 class SellProduct extends StatefulWidget {
   @override

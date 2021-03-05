@@ -1,8 +1,11 @@
 import 'package:broline/Models/Colors.dart';
+import 'package:broline/Models/Lists.dart';
 import 'package:broline/Pages/HomePage.dart';
+import 'package:broline/Pages/Profile.dart';
 import 'package:broline/Pages/SellProduct.dart';
 import 'package:broline/Pages/SubCategoryPage.dart';
 import 'package:flutter/material.dart';
+
 class Broline extends StatefulWidget {
   Broline({Key key, this.title}) : super(key: key);
 
@@ -19,12 +22,12 @@ class _BrolineState extends State<Broline> {
     return [
       BottomNavigationBarItem(icon: Icon(Icons.home), label: "Home"),
       BottomNavigationBarItem(
-        icon: Icon(Icons.favorite_outline_rounded),
+        icon: Icon(Icons.favorite),
         label: "Favorite",
       ),
       BottomNavigationBarItem(
-          icon: Icon(Icons.add_box_outlined), label: "Sell"),
-      BottomNavigationBarItem(icon: Icon(Icons.message), label: "Message"),
+          icon: Icon(Icons.post_add), label: "Sell"),
+      BottomNavigationBarItem(icon: Icon(Icons.chat_outlined), label: "Message"),
       BottomNavigationBarItem(icon: Icon(Icons.person), label: "Profile")
     ];
   }
@@ -42,19 +45,17 @@ class _BrolineState extends State<Broline> {
       },
       children: <Widget>[
         HomePage(),
-        SubCategoryPage(
-          categoryName: "",
+        Center(
+          child:Text("Soon") ,
         ),
         SellProduct(),
-        SubCategoryPage(
-          categoryName: "",
-        ),
-        HomePage(),
+       Center(
+         child:Text("Soon") ,
+       ),
+       Profile()
       ],
     );
   }
-
-
 
   void pageChanged(int index) {
     setState(() {
@@ -76,7 +77,10 @@ class _BrolineState extends State<Broline> {
       body: buildPageView(),
       bottomNavigationBar: BottomNavigationBar(
         showUnselectedLabels: true,
-        unselectedItemColor: BrolineColor.brolineDarkYellow,
+        elevation: 2.0,
+        unselectedIconTheme:
+            IconThemeData(color: BrolineColor.brolineDarkYellow),
+        unselectedItemColor: BrolineColor.brolineDarkBlue,
         selectedItemColor: BrolineColor.brolineDarkBlue,
         currentIndex: bottomSelectedIndex,
         onTap: (index) {

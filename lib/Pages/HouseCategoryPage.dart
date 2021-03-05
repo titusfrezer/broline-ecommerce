@@ -11,11 +11,16 @@ class HouseCategoryPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text("Select Sub Category"),),
-      body: ListView.builder(itemBuilder: (BuildContext context,int index){
-        return InkWell(
+      appBar: AppBar(title: Text("Select Sub Category"),backgroundColor: BrolineColor.brolineDarkBlue,),
+      body: GridView.builder(gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+        crossAxisCount: 2,
+        childAspectRatio:1.5
+
+      ),itemBuilder: (BuildContext context,int index){
+        return
+          InkWell(
           onTap: () {
-            if(DropDownItemsList.houseList[index] == "House"){
+            if(Lists.houseList[index].categoryName == "House"){
               Navigator.of(context).push(MaterialPageRoute(builder: (BuildContext context)=> HouseSellOrBuy()));
 
             }else
@@ -23,10 +28,42 @@ class HouseCategoryPage extends StatelessWidget {
 
           },
           child: Container(
-              color: BrolineColor.brolineDarkBlue,
-              height: 50,
-              margin: EdgeInsets.only(bottom: 5),
-              child: Text(DropDownItemsList.houseList[index])),
+            width: 75,
+            margin: EdgeInsets.only(left: 10, right: 10, top: 25),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Container(
+                  width: 75,
+                  height: 75,
+                  decoration: BoxDecoration(
+                    border: Border.all(
+                        color: BrolineColor.brolineDarkYellow,
+                        width: 0.75),
+                    borderRadius:
+                    BorderRadius.all(Radius.circular(15)),
+                  ),
+                  child: ClipRRect(
+                    borderRadius:
+                    BorderRadius.all(Radius.circular(15)),
+                    child: Image.asset(
+                      Lists.houseList[index].categoryImage,
+                      fit: BoxFit.cover,
+                    ),
+                  ),
+                ),
+                Text(
+                  Lists.houseList[index].categoryName,
+                  maxLines: 1,
+                  textAlign: TextAlign.center,
+                  overflow: TextOverflow.ellipsis,
+                  style: TextStyle(
+                      color: BrolineColor.brolineBlack,
+                      fontWeight: FontWeight.bold),
+                )
+              ],
+            ),
+          ),
         );
       },itemCount: DropDownItemsList.houseList.length,),
     );

@@ -10,8 +10,14 @@ import 'Home.dart';
 import 'Otp.dart';
 import 'Profile.dart';
 
-class LoginPage extends StatelessWidget {
+class LoginPage extends StatefulWidget {
+  @override
+  _LoginPageState createState() => _LoginPageState();
+}
+
+class _LoginPageState extends State<LoginPage> {
   TextEditingController _codeController = TextEditingController();
+
   CollectionReference userRef = FirebaseFirestore.instance.collection("users");
 
   @override
@@ -46,28 +52,32 @@ class LoginPage extends StatelessWidget {
             // ),
             Container(
               margin: EdgeInsets.symmetric(horizontal: 50),
-              padding: EdgeInsets.symmetric(horizontal: 15, vertical: 3),
+              padding: EdgeInsets.symmetric(horizontal: 15,),
               decoration: BoxDecoration(
                   border: Border.all(color: BrolineColor.brolineDarkBlue),
                   borderRadius: BorderRadius.circular(25)),
               child: TextFormField(
+
                 keyboardType: TextInputType.number,
+
                 decoration: InputDecoration(
+                  contentPadding:   EdgeInsets.symmetric(horizontal: 15,vertical: 15),
+
                   border: InputBorder.none,
                   focusedBorder: InputBorder.none,
                   enabledBorder: InputBorder.none,
                   errorBorder: InputBorder.none,
                   disabledBorder: InputBorder.none,
-                  prefixIcon: Image.asset(
-                    "assets/images/flag.jfif",
-                    scale: 6,
+                  prefixIcon: Container(
+                    width: 25,
+                  alignment: Alignment.center,
+                    child: Text("+251",textAlign: TextAlign.center,style: TextStyle(fontSize: 16),),
                   ),
                   suffixIcon: Icon(
                     Icons.phone_android,
                     color: BrolineColor.brolineDarkBlue,
                   ),
                   hintText: "Enter your Phone number",
-                  prefixText: "+251",
                 ),
               ),
             ),

@@ -495,11 +495,13 @@ class _SellFormState extends State<SellForm> {
           _buildForm("Sub City", Icons.house_outlined),
           _buildDropDownMenuButton("Sell/Rent", DropDownItemsList.alternative),
           _buildForm("Surface Area", Icons.landscape_outlined),
-          _buildForm("Price", Icons.money),
+          _buildForm("New Price", Icons.money),
+          _buildForm("Old Price", Icons.payments_outlined),
           _buildDropDownMenuButton(
               "Fixed/Negotiable", DropDownItemsList.negotiation),
           _buildForm("Seller Name", Icons.person),
           _buildForm("Phone Number", Icons.phone_android),
+          _buildPostAddButton()
         ],
       );
     } else if (widget.categoryName == "Sell" ||
@@ -516,10 +518,12 @@ class _SellFormState extends State<SellForm> {
           _buildForm("Bed Rooms", Icons.king_bed),
           _buildForm("Bath Rooms", Icons.bathtub_outlined),
           _buildForm("Kitchens", Icons.kitchen_outlined),
-          _buildForm("Price", Icons.money),
+          _buildForm("New Price", Icons.money),
+          _buildForm("Old Price", Icons.payments_outlined),
           _buildDropDownMenuButton("Repair", DropDownItemsList.status),
           _buildForm("Seller Name", Icons.person),
           _buildForm("Phone Number", Icons.phone_android),
+          _buildPostAddButton()
         ],
       );
     } else if (widget.categoryName == "Rent") {
@@ -532,11 +536,13 @@ class _SellFormState extends State<SellForm> {
           _buildForm("Sub City", Icons.house_outlined),
           _buildForm("Surface Area", Icons.landscape_outlined),
           _buildForm("Rooms", Icons.room),
-          _buildForm("Price", Icons.money),
-          _buildForm("Seller Name", Icons.person),
-          _buildForm("Phone Number", Icons.phone_android),
+          _buildForm("New Price", Icons.money),
+          _buildForm("Old Price", Icons.payments_outlined),
           _buildDropDownMenuButton(
               "Negotiation", DropDownItemsList.negotiation),
+          _buildForm("Seller Name", Icons.person),
+          _buildForm("Phone Number", Icons.phone_android),
+          _buildPostAddButton()
         ],
       );
     } else if (widget.categoryName == "Hall") {
@@ -550,9 +556,11 @@ class _SellFormState extends State<SellForm> {
           _buildForm("Capacity", Icons.people_outline),
           _buildForm("Duration", Icons.access_time_outlined),
           _buildDropDownMenuButton("Service", DropDownItemsList.purpose),
-          _buildForm("Price", Icons.money),
+          _buildForm("New Price", Icons.money),
+          _buildForm("Old Price", Icons.payments_outlined),
           _buildForm("Seller Name", Icons.person),
           _buildForm("Phone Number", Icons.phone_android),
+          _buildPostAddButton()
         ],
       );
     } else if (widget.categoryName == "Store") {
@@ -567,9 +575,11 @@ class _SellFormState extends State<SellForm> {
           _buildForm("Surface Area", Icons.landscape_outlined),
           _buildDropDownMenuButton(
               "Negotiation", DropDownItemsList.negotiation),
-          _buildForm("Price", Icons.money),
+          _buildForm("New Price", Icons.money),
+          _buildForm("Old Price", Icons.payments_outlined),
           _buildForm("Seller Name", Icons.person),
           _buildForm("Phone Number", Icons.phone_android),
+          _buildPostAddButton()
         ],
       );
     } else if (widget.categoryName == "Vehicle") {
@@ -588,9 +598,11 @@ class _SellFormState extends State<SellForm> {
           _buildDropDownMenuButton(
               "Engine Status", DropDownItemsList.engineStatus),
           _buildForm("Color", Icons.color_lens_outlined),
-          _buildForm("Price", Icons.money),
+          _buildForm("New Price", Icons.money),
+          _buildForm("Old Price", Icons.payments_outlined),
           _buildForm("Seller Name", Icons.person),
           _buildForm("Phone Number", Icons.phone_android),
+          _buildPostAddButton()
         ],
       );
     } else if (widget.categoryName == "Electronics") {
@@ -604,9 +616,11 @@ class _SellFormState extends State<SellForm> {
           _buildDropDownMenuButton(
               "Electronics", DropDownItemsList.electronicsList),
           _buildForm("Detail", Icons.description_outlined),
-          _buildForm("Price", Icons.money),
+          _buildForm("New Price", Icons.money),
+          _buildForm("Old Price", Icons.payments_outlined),
           _buildForm("Seller Name", Icons.person),
           _buildForm("Phone Number", Icons.phone_android),
+          _buildPostAddButton()
         ],
       );
     } else if (widget.categoryName == "Office and House Holds") {
@@ -619,11 +633,15 @@ class _SellFormState extends State<SellForm> {
           _buildForm("Sub City", Icons.house_outlined),
           _buildDropDownMenuButton("Status", DropDownItemsList.goodsStatus),
           _buildForm("Detail", Icons.description_outlined),
-          _buildForm("Price", Icons.money),
-          _buildDropDownMenuButton(
-              "Negotiation", DropDownItemsList.negotiation),
           _buildForm("Seller Name", Icons.person),
           _buildForm("Phone Number", Icons.phone_android),
+          _buildDropDownMenuButton(
+              "Negotiation", DropDownItemsList.negotiation),
+          _buildForm("New Price", Icons.money),
+          _buildForm("Old Price", Icons.payments_outlined),
+          _buildForm("Seller Name", Icons.person),
+          _buildForm("Phone Number", Icons.phone_android),
+          _buildPostAddButton()
         ],
       );
     } else if (widget.categoryName == "Clothes and Jewelery") {
@@ -637,11 +655,13 @@ class _SellFormState extends State<SellForm> {
           _buildDropDownMenuButton(
               "What to post?", DropDownItemsList.clothList),
           _buildForm("Detail", Icons.description_outlined),
-          _buildForm("Price", Icons.money),
+          _buildForm("New Price", Icons.money),
+          _buildForm("Old Price", Icons.payments_outlined),
           _buildDropDownMenuButton(
               "Negotiation", DropDownItemsList.negotiation),
           _buildForm("Seller Name", Icons.person),
           _buildForm("Phone Number", Icons.phone_android),
+          _buildPostAddButton()
         ],
       );
     } else if (widget.categoryName == "Construction Materials") {
@@ -655,12 +675,15 @@ class _SellFormState extends State<SellForm> {
           _buildDropDownMenuButton(
               "What to post?", DropDownItemsList.clothList),
           _buildForm("Detail", Icons.description_outlined),
-          _buildForm("Price", Icons.money),
+          _buildForm("New Price", Icons.money),
+          _buildForm("Old Price", Icons.payments_outlined),
           _buildDropDownMenuButton(
               "Negotiation", DropDownItemsList.negotiation),
           _buildForm("Seller Name", Icons.person),
           _buildForm("Phone Number", Icons.phone_android),
+          _buildPostAddButton()
         ],
+
       );
     } else if (widget.categoryName == "Job") {
       return ListView(
@@ -676,6 +699,7 @@ class _SellFormState extends State<SellForm> {
           _buildForm("Employee Criteria", Icons.list_alt_outlined),
           _buildForm("Contract Year", Icons.timeline),
           _buildForm("Salary", Icons.money),
+          _buildPostAddButton()
         ],
       );
     } else if (widget.categoryName == "Food and Beverage") {
@@ -693,6 +717,7 @@ class _SellFormState extends State<SellForm> {
           _buildDropDownMenuButton(
               "Payment Method", DropDownItemsList.paymentMethod),
           _buildForm("Service Provider Phone Number", Icons.phone_android),
+          _buildPostAddButton()
         ],
       );
     } else if (widget.categoryName == "Pets") {
@@ -710,9 +735,11 @@ class _SellFormState extends State<SellForm> {
           _buildForm("Description", Icons.description_outlined),
           _buildDropDownMenuButton(
               "Negotiation", DropDownItemsList.negotiation),
+          _buildForm("New Price", Icons.money),
+          _buildForm("Old Price", Icons.payments_outlined),
           _buildForm("Name", Icons.person),
           _buildForm("Phone Number", Icons.phone_android),
-          _buildForm("Price", Icons.money),
+          _buildPostAddButton()
         ],
       );
     } else if (widget.categoryName == "Entertainment Service") {
@@ -728,6 +755,7 @@ class _SellFormState extends State<SellForm> {
           _buildForm("Services Provided", Icons.favorite_outline),
           _buildForm("Description", Icons.description_outlined),
           _buildForm("Phone Number", Icons.phone_android),
+          _buildPostAddButton()
         ],
       );
     } else if (widget.categoryName == "Drugs") {
@@ -744,6 +772,7 @@ class _SellFormState extends State<SellForm> {
           _buildForm("Description", Icons.description_outlined),
           _buildForm("Name", Icons.person),
           _buildForm("Phone Number", Icons.phone_android),
+          _buildPostAddButton()
         ],
       );
     } else {
@@ -757,16 +786,38 @@ class _SellFormState extends State<SellForm> {
           _buildForm("Description", Icons.description_outlined),
           _buildForm("Name", Icons.person),
           _buildForm("Phone Number", Icons.phone_android),
+          _buildPostAddButton()
         ],
       );
     }
   }
 
+  Widget _buildPostAddButton() {
+    return Padding(
+      padding:  EdgeInsets.symmetric(vertical: 50,horizontal: 75),
+      child: RaisedButton(
+        splashColor: BrolineColor.brolineBlack,
+
+        padding: EdgeInsets.symmetric(vertical: 10,),
+
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(5)
+        ),
+        onPressed: () {},
+        child: Text("Post Ad",style: TextStyle(fontSize: 18),),
+        color: BrolineColor.brolineDarkBlue,
+        textColor: BrolineColor.brolineWhite,
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text("Post Ad"),
-      backgroundColor: BrolineColor.brolineDarkBlue,),
+      appBar: AppBar(
+        title: Text("Post Ad"),
+        backgroundColor: BrolineColor.brolineDarkBlue,
+      ),
       body: _buildFormList(),
     );
   }

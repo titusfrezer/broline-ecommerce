@@ -1,12 +1,17 @@
+import 'package:broline/Models/Lists.dart';
+import 'package:broline/Pages/ProductDetailPage.dart';
+import 'package:broline/Pages/ProductsList.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:broline/Models/MyCategory.dart';
 
 import 'package:broline/Models/Colors.dart';
 
 class SubCategoryPage extends StatefulWidget {
   final String categoryName;
+  final List<MyCategory> allSubCategory;
 
-  SubCategoryPage({this.categoryName});
+  SubCategoryPage({this.categoryName, this.allSubCategory});
 
   @override
   _SubCategoryPageState createState() => _SubCategoryPageState();
@@ -17,12 +22,35 @@ class _SubCategoryPageState extends State<SubCategoryPage> {
   Widget backArrow;
   Widget search;
   Widget title;
+  List<MyCategory> subCategory;
+
+  void _buildGrid() {
+    if (widget.categoryName == "House") {
+      subCategory = Lists.houseList;
+    } else if (widget.categoryName == "Electronics") {
+      subCategory = Lists.electronicsList;
+    } else if (widget.categoryName == "Clothes and Jewelery") {
+      subCategory = Lists.clothList;
+    } else if (widget.categoryName == "Entertainment") {
+      subCategory = Lists.entertainmentList;
+    } else if (widget.categoryName == "Pets") {
+      subCategory = Lists.petsList;
+    } else if (widget.categoryName == "Drugs") {
+      subCategory = Lists.drugList;
+    } else if (widget.categoryName == "Vehicle") {
+      subCategory = Lists.vehicleList;
+    } else if (widget.categoryName == "All Categories") {
+      subCategory = widget.allSubCategory;
+    } else {
+      subCategory = Lists.houseList;
+    }
+  }
 
   Widget _buildSearch(bool innerScrolled) {
     return IconButton(
         icon: Icon(
           Icons.search,
-          color: BrolineColor.brolineLightBlue,
+          color: BrolineColor.brolineDarkYellow,
         ),
         onPressed: () {
           setState(() {
@@ -31,13 +59,13 @@ class _SubCategoryPageState extends State<SubCategoryPage> {
                   width: double.maxFinite,
                   padding: EdgeInsets.symmetric(horizontal: 15, vertical: 3),
                   decoration: BoxDecoration(
-                      color: BrolineColor.brolineLightGrey,
+                      color: BrolineColor.brolineWhite,
                       borderRadius: BorderRadius.circular(16)),
                   child: TextFormField(
                       decoration: InputDecoration(
                     icon: Icon(
                       Icons.search,
-                      color: BrolineColor.brolineLightBlue,
+                      color: BrolineColor.brolineDarkYellow,
                     ),
                     hintText: 'Search Category',
                     hintStyle: TextStyle(fontSize: 18),
@@ -59,6 +87,7 @@ class _SubCategoryPageState extends State<SubCategoryPage> {
   @override
   void initState() {
     isSterched = false;
+    _buildGrid();
     backArrow = IconButton(
         icon: Icon(
           Icons.arrow_back_ios_outlined,
@@ -87,14 +116,17 @@ class _SubCategoryPageState extends State<SubCategoryPage> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: BrolineColor.brolineWhite,
-      body: NestedScrollView(
-        headerSliverBuilder: (BuildContext context, bool innerBoxScrolled) {
-          return <Widget>[
-            SliverPadding(
-              padding: EdgeInsets.only(top: 10, right: 10, left: 10),
-              sliver: SliverAppBar(
+    return SafeArea(
+      child: Scaffold(
+        backgroundColor: BrolineColor.brolineWhite,
+        body: NestedScrollView(
+          headerSliverBuilder: (BuildContext context, bool innerBoxScrolled) {
+            print(innerBoxScrolled);
+            return <Widget>[
+              SliverAppBar(
+                leadingWidth: 30,
+                collapsedHeight: 60,
+                toolbarHeight: 55,
                 floating: true,
                 pinned: true,
                 title: innerBoxScrolled == true
@@ -103,36 +135,45 @@ class _SubCategoryPageState extends State<SubCategoryPage> {
                         padding:
                             EdgeInsets.symmetric(horizontal: 15, vertical: 3),
                         decoration: BoxDecoration(
-                            color: BrolineColor.brolineLightGrey,
-                            borderRadius: BorderRadius.circular(16)),
+                            color: BrolineColor.brolineWhite,
+                            borderRadius: BorderRadius.circular(5)),
                         child: TextFormField(
                             decoration: InputDecoration(
                           icon: Icon(
                             Icons.search,
-                            color: BrolineColor.brolineDarkBlue,
+                            color: BrolineColor.brolineDarkYellow,
                           ),
+                          border: InputBorder.none,
+                          focusedBorder: InputBorder.none,
+                          enabledBorder: InputBorder.none,
+                          errorBorder: InputBorder.none,
+                          disabledBorder: InputBorder.none,
                           hintText: 'Search Category',
                           hintStyle: TextStyle(fontSize: 18),
                         )))
                     : isSterched == false
                         ? Text(
                             widget.categoryName,
-                            style:
-                                TextStyle(color: BrolineColor.brolineDarkBlue),
+                            style: TextStyle(color: BrolineColor.brolineWhite),
                           )
                         : Container(
                             width: double.maxFinite,
                             padding: EdgeInsets.symmetric(
                                 horizontal: 15, vertical: 3),
                             decoration: BoxDecoration(
-                                color: BrolineColor.brolineLightGrey,
-                                borderRadius: BorderRadius.circular(16)),
+                                color: BrolineColor.brolineWhite,
+                                borderRadius: BorderRadius.circular(5)),
                             child: TextFormField(
                                 decoration: InputDecoration(
                               icon: Icon(
                                 Icons.search,
-                                color: BrolineColor.brolineDarkBlue,
+                                color: BrolineColor.brolineDarkYellow,
                               ),
+                              border: InputBorder.none,
+                              focusedBorder: InputBorder.none,
+                              enabledBorder: InputBorder.none,
+                              errorBorder: InputBorder.none,
+                              disabledBorder: InputBorder.none,
                               hintText: 'Search Category',
                               hintStyle: TextStyle(fontSize: 18),
                             ))),
@@ -144,19 +185,28 @@ class _SubCategoryPageState extends State<SubCategoryPage> {
                           ? SizedBox()
                           : _buildSearch(false)
                 ],
-                backgroundColor: BrolineColor.brolineWhite,
+                backgroundColor: innerBoxScrolled == true
+                    ? BrolineColor.brolineWhite
+                    : isSterched == true
+                        ? BrolineColor.brolineWhite
+                        : BrolineColor.brolineDarkBlue,
                 leading: IconButton(
                     icon: Icon(
                       Icons.arrow_back_ios_outlined,
-                      color: BrolineColor.brolineDarkBlue,
+                      color: innerBoxScrolled == true
+                          ? BrolineColor.brolineDarkBlue
+                          : isSterched == true
+                              ? BrolineColor.brolineDarkBlue
+                              : BrolineColor.brolineWhite,
                     ),
                     onPressed: () {
                       setState(() {
-                        if (isSterched == true) {
+                        if (isSterched == true && innerBoxScrolled == true) {
+                          Navigator.of(context).pop();
+                        } else if (isSterched == true) {
                           title = Text(
                             widget.categoryName,
-                            style:
-                                TextStyle(color: BrolineColor.brolineDarkBlue),
+                            style: TextStyle(color: BrolineColor.brolineWhite),
                           );
                           isSterched = false;
                         } else {
@@ -165,45 +215,65 @@ class _SubCategoryPageState extends State<SubCategoryPage> {
                       });
                     }),
               ),
-            ),
-
-          ];
-        },
-        body: CustomScrollView(
-          slivers: [
-            SliverList(
-              delegate: SliverChildBuilderDelegate(
-                (BuildContext context, int index) {
-                  return Container(
-                    height: 150,
-                    width: double.maxFinite,
-                    padding: EdgeInsets.symmetric(vertical: 20),
+            ];
+          },
+          body: CustomScrollView(
+            slivers: [
+              SliverGrid(
+                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                  crossAxisCount: 3,
+                ),
+                delegate: SliverChildBuilderDelegate(
+                    (BuildContext context, int index) {
+                  return InkWell(
+                    onTap: () {
+                      Navigator.of(context).push(
+                          MaterialPageRoute(builder: (BuildContext context) {
+                        return ProductList();
+                      }));
+                    },
                     child: Container(
-                      decoration: BoxDecoration(
-                          color: BrolineColor.brolineDarkBlue,
-                          borderRadius: BorderRadius.circular(15),
-                          image: DecorationImage(
-                            image: AssetImage('assets/images/laptop.jfif'),
-                            fit: BoxFit.cover,
-                          )),
-                      margin: EdgeInsets.symmetric(horizontal: 10),
-                      child: Padding(
-                        padding:
-                            EdgeInsets.symmetric(vertical: 20, horizontal: 10),
-                        child: Text(
-                          "Electronics",
-                          style: TextStyle(
-                              color: BrolineColor.brolineWhite,
-                              fontSize: 30,
-                              fontWeight: FontWeight.w600),
-                        ),
+                      width: 75,
+                      margin: EdgeInsets.only(left: 10, right: 10, top: 25),
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Container(
+                            width: 75,
+                            height: 75,
+                            decoration: BoxDecoration(
+                              border: Border.all(
+                                  color: BrolineColor.brolineDarkYellow,
+                                  width: 0.75),
+                              borderRadius:
+                                  BorderRadius.all(Radius.circular(15)),
+                            ),
+                            child: ClipRRect(
+                              borderRadius:
+                                  BorderRadius.all(Radius.circular(15)),
+                              child: Image.asset(
+                                subCategory[index].categoryImage,
+                                fit: BoxFit.cover,
+                              ),
+                            ),
+                          ),
+                          Text(
+                            subCategory[index].categoryName,
+                            maxLines: 1,
+                            textAlign: TextAlign.center,
+                            overflow: TextOverflow.ellipsis,
+                            style: TextStyle(
+                                color: BrolineColor.brolineBlack,
+                                fontWeight: FontWeight.bold),
+                          )
+                        ],
                       ),
                     ),
                   );
-                },
-              ),
-            )
-          ],
+                }, childCount: subCategory.length),
+              )
+            ],
+          ),
         ),
       ),
     );

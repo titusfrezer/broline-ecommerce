@@ -57,21 +57,35 @@ flutter:
   assets:
     - assets/images/broline.jfif
     - assets/images/brolineSplashCroped.jpg
-    - assets/images/construction.jpeg
-    - assets/images/drug.jpeg
-    - assets/images/electronics.jpeg
-    - assets/images/entertainment.jpeg
-    - assets/images/food.jpeg
-    - assets/images/house.jpeg
-    - assets/images/jewelery.jpeg
-    - assets/images/job.jpeg
-    - assets/images/office.jpeg
-    - assets/images/other.jpeg
-    - assets/images/pets.jpeg
-    - assets/images/vehicle.jpeg
+    - assets/images/MainCategory/construction.jpeg
+    - assets/images/MainCategory/drug.jpeg
+    - assets/images/MainCategory/electronics.jpeg
+    - assets/images/MainCategory/entertainment.jpeg
+    - assets/images/MainCategory/food.jpeg
+    - assets/images/MainCategory/house.jpeg
+    - assets/images/MainCategory/jewelery.jpeg
+    - assets/images/MainCategory/job.jpeg
+    - assets/images/MainCategory/office.jpeg
+    - assets/images/MainCategory/other.jpeg
+    - assets/images/MainCategory/pets.jpeg
+    - assets/images/MainCategory/vehicle.jpeg
     - assets/images/brolineLogo.jpg
     - assets/images/google.png
+    - assets/images/MainCategory/carCartoon.jfif
+    - assets/images/MainCategory/clothCartoon.jfif
+    - assets/images/MainCategory/constructionCartoon.jfif
+    - assets/images/MainCategory/electronicsCartoon.jfif
+    - assets/images/MainCategory/houseCartoon.jfif
+    - assets/images/MainCategory/jobCartoon.jfif
+    - assets/images/MainCategory/officeCartoon.jfif
+    - assets/images/MainCategory/drugCartoon.jfif
+    - assets/images/MainCategory/entertainmentCartoon.jfif
+    - assets/images/MainCategory/foodCartoon.png
+    - assets/images/MainCategory/petsCartoon.jfif
+    - assets/images/rent.jfif
+    - assets/images/sell.jfif
     - assets/images/flag.jfif
+    - assets/images/houseBackground.jfif
   #   - images/a_dot_ham.jpe    - assets/images/brolineSplashCroped.jpgg
 
   # An image asset can refer to one or more resolution-specific "variants", see

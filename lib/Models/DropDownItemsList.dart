@@ -96,8 +96,8 @@ class DropDownItemsList {
     "Meting",
     "Wedding",
     "BirthDay",
-    "Graduation"
-        "Other"
+    "Graduation",
+    "Other"
   ];
   static const newOld = <String>[
     "New",
