@@ -40,11 +40,10 @@ class Lists {
     MyCategory("Others", "assets/images/MainCategory/other.jpeg"),
   ];
   static List<MyCategory> houseList = [
-    MyCategory("Free Area", "assets/images/MainCategory/houseCartoon.jfif"),
-    MyCategory("Condominium", "assets/images/MainCategory/carCartoon.jfif"),
-    MyCategory("House", "assets/images/MainCategory/electronicsCartoon.jfif"),
-    MyCategory("Hall", "assets/images/MainCategory/officeCartoon.jfif"),
-    MyCategory("Store", "assets/images/MainCategory/clothCartoon.jfif"),
+    MyCategory("Land", "assets/images/SubCategory/landCartoon.jfif"),
+    MyCategory("House", "assets/images/MainCategory/houseCartoon.jfif"),
+    MyCategory("Hall", "assets/images/SubCategory/hallCartoon.jfif"),
+    MyCategory("Store", "assets/images/SubCategory/storeCartoon.png"),
   ];
   static List<MyCategory> electronicsList = [
     MyCategory("Computer", "assets/images/MainCategory/houseCartoon.jfif"),

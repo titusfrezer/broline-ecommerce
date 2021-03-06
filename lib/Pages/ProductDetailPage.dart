@@ -18,52 +18,40 @@ class _ProductDetailPageState extends State<ProductDetailPage> {
     return Scaffold(
       backgroundColor: BrolineColor.brolineLightGrey,
       appBar: AppBar(
-
         elevation: 0.0,
         title: Text("Product Detail"),
-
         backgroundColor: BrolineColor.brolineDarkBlue,
       ),
       body: CustomScrollView(
-
         slivers: [
           SliverToBoxAdapter(
-            child: Column(
-
-                children: [
-
+            child: Column(children: [
               Container(
-
-                height: 250,
-
-
-                child: Carousel(
-
-                  boxFit: BoxFit.cover,
-                  autoplay: false,
-                  dotBgColor: Colors.transparent,
-                  dotIncreaseSize: 1,
-                  dotVerticalPadding: 5,
-                  images: Lists.imgList.map((item) {
-                    item = boxImage;
-                    return Container(
-
-                      child: FadeInImage(
-                        fit: BoxFit.cover,
-                        width: double.maxFinite,
-                        placeholder: AssetImage("assets/images/laptop.jfif"),
-                        image: NetworkImage(
-                          item,
+                  height: 250,
+                  child: Carousel(
+                    boxFit: BoxFit.cover,
+                    autoplay: false,
+                    dotBgColor: Colors.transparent,
+                    dotIncreaseSize: 1,
+                    dotVerticalPadding: 5,
+                    images: Lists.imgList.map((item) {
+                      item = boxImage;
+                      return Container(
+                        child: FadeInImage(
+                          fit: BoxFit.cover,
+                          width: double.maxFinite,
+                          placeholder: AssetImage("assets/images/laptop.jfif"),
+                          image: NetworkImage(
+                            item,
+                          ),
                         ),
-                      ),
-                    );
-                  }).toList(),
-                )
-                ),
-
+                      );
+                    }).toList(),
+                  )),
               Container(
-                margin: EdgeInsets.only(top: 20),
-                height: 70,
+                color: BrolineColor.brolineWhite,
+                padding: EdgeInsets.only(top: 20,bottom: 20),
+                height: 100,
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
@@ -83,12 +71,12 @@ class _ProductDetailPageState extends State<ProductDetailPage> {
                 height: 300,
                 width: double.maxFinite,
                 margin: EdgeInsets.symmetric(horizontal: 10, vertical: 20),
-                padding: EdgeInsets.symmetric(horizontal: 20, vertical:20),
+                padding: EdgeInsets.symmetric(horizontal: 20, vertical: 20),
                 decoration: BoxDecoration(
                   color: BrolineColor.brolineWhite,
                   borderRadius: BorderRadius.only(
-                      topLeft: Radius.circular(50),
-                      topRight: Radius.circular(50)),
+                      topLeft: Radius.circular(25),
+                      topRight: Radius.circular(25)),
                 ),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -104,18 +92,24 @@ class _ProductDetailPageState extends State<ProductDetailPage> {
                     ),
                     ListTile(
                       contentPadding:
-                          EdgeInsets.symmetric(horizontal:25, vertical: 0),
+                          EdgeInsets.symmetric(horizontal: 25, vertical: 0),
                       trailing: Container(
                         height: 100,
                         width: 60,
-                        padding: EdgeInsets.only(left: 20, top: 10, bottom: 5,),
+                        padding: EdgeInsets.only(
+                          left: 20,
+                          top: 10,
+                          bottom: 5,
+                        ),
                         decoration: BoxDecoration(
                             color: BrolineColor.brolineDarkBlue,
                             borderRadius: BorderRadius.circular(150)),
                         child: Text(
                           "20% off",
                           maxLines: 2,
-                          style: TextStyle(color: BrolineColor.brolineWhite,),
+                          style: TextStyle(
+                            color: BrolineColor.brolineWhite,
+                          ),
                         ),
                       ),
                       title: Text(
@@ -123,17 +117,70 @@ class _ProductDetailPageState extends State<ProductDetailPage> {
                         style: TextStyle(
                             color: BrolineColor.brolineDarkBlue,
                             fontWeight: FontWeight.w700,
-                        fontSize: 20),
+                            fontSize: 20),
                       ),
                       subtitle: Text(
                         "\$350",
-                        style:
-                            TextStyle(decoration: TextDecoration.lineThrough,fontSize: 15),
+                        style: TextStyle(
+                            decoration: TextDecoration.lineThrough,
+                            fontSize: 15),
                       ),
                     )
                   ],
                 ),
-              )
+              ),
+            Container(
+                height: 300,
+                width: double.maxFinite,
+                margin: EdgeInsets.only(left: 10,right: 10,bottom: 20 ),
+                padding: EdgeInsets.symmetric(horizontal: 20, vertical: 20),
+                decoration: BoxDecoration(
+                  color: BrolineColor.brolineWhite,
+                  borderRadius: BorderRadius.only(
+                      bottomLeft: Radius.circular(25),
+                      bottomRight: Radius.circular(25)),
+                ),
+            child: Text("Description ",style: TextStyle(fontSize: 20),
+                ),),
+              Padding(
+                padding: const EdgeInsets.only(left: 10,right: 10),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  children: [
+                    SizedBox(
+                      width: 125,
+                      child: RaisedButton(
+
+                        padding: EdgeInsets.symmetric(
+                          vertical: 10,
+                        ),
+                        color: BrolineColor.brolineDarkBlue,
+                        textColor: BrolineColor.brolineWhite,
+                        shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(5)),
+                        onPressed: () {},
+                        child: Icon(Icons.call),
+                      ),
+                    ),
+                    Text("Contact",style: TextStyle(fontSize: 16),),
+                    SizedBox(
+                      width: 125,
+                      child: RaisedButton(
+                        padding: EdgeInsets.symmetric(
+                          vertical: 10,
+                        ),
+                        color: BrolineColor.brolineDarkBlue,
+                        textColor: BrolineColor.brolineWhite,
+                        shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(5)),
+                        onPressed: () {},
+                        child: Icon(Icons.message),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+              SizedBox(height: 20,)
             ]),
           )
         ],

@@ -43,12 +43,8 @@ class _HomePageState extends State<HomePage> {
                   background: Container(
                     color: Colors.white,
                     child: Carousel(
-                      onImageChange: (first, second) {
-                        setState(() {
-                          lastImage = first;
-                        });
-                      },
                       boxFit: BoxFit.cover,
+
                       autoplay: true,
                       animationCurve: Curves.fastOutSlowIn,
                       animationDuration: Duration(seconds: 5),
@@ -119,7 +115,7 @@ class _HomePageState extends State<HomePage> {
                               child: FadeInImage(
                             fit: BoxFit.cover,
                             width: double.maxFinite,
-                            image: NetworkImage(Lists.imgList[lastImage]),
+                            image: NetworkImage(Lists.imgList[0]),
                             placeholder:
                                 AssetImage("assets/images/laptop.jfif"),
                           ))
@@ -138,7 +134,7 @@ class _HomePageState extends State<HomePage> {
               child: Column(
                 children: [
                   _buildCategoryList(),
-                  _buildRecentProducts(),
+                  _buildSuggestedProducts(),
                   Container(
                     width: double.maxFinite,
                     margin: EdgeInsets.only(left: 30, right: 30, top: 50),
@@ -213,13 +209,14 @@ class _HomePageState extends State<HomePage> {
                                 ),
                               ),
                               title: Text(
-                                "\$300",
+                                "300 Birr",
+
                                 style: TextStyle(
                                     color: BrolineColor.brolineDarkBlue,
                                     fontWeight: FontWeight.w700),
                               ),
                               subtitle: Text(
-                                "\$350",
+                                "350 Birr",
                                 style: TextStyle(
                                     color: BrolineColor.brolineDarkYellow,
                                     decoration: TextDecoration.lineThrough),
@@ -334,7 +331,7 @@ class _HomePageState extends State<HomePage> {
     );
   }
 
-  Widget _buildRecentProducts() {
+  Widget _buildSuggestedProducts() {
     return Container(
       margin: EdgeInsets.symmetric(horizontal: 10),
       height: 350,
@@ -347,7 +344,7 @@ class _HomePageState extends State<HomePage> {
           Padding(
             padding: EdgeInsets.only(left: 20, right: 10, top: 20),
             child: Text(
-              "Recent Products",
+              "Products You May Like",
               style: TextStyle(
                   fontSize: 22,
                   color: BrolineColor.brolineBlack,

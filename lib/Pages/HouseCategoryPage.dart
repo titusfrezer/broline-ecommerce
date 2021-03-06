@@ -14,28 +14,31 @@ class HouseCategoryPage extends StatelessWidget {
       appBar: AppBar(title: Text("Select Sub Category"),backgroundColor: BrolineColor.brolineDarkBlue,),
       body: GridView.builder(gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
         crossAxisCount: 2,
-        childAspectRatio:1.5
+
+        childAspectRatio:1.3
 
       ),itemBuilder: (BuildContext context,int index){
         return
           InkWell(
           onTap: () {
-            if(Lists.houseList[index].categoryName == "House"){
-              Navigator.of(context).push(MaterialPageRoute(builder: (BuildContext context)=> HouseSellOrBuy()));
-
-            }else
+            // if(Lists.houseList[index].categoryName == "House"){
+            //   Navigator.of(context).push(MaterialPageRoute(builder: (BuildContext context)=> HouseSellOrBuy()));
+            //
+            // }else
                 Navigator.of(context).push(MaterialPageRoute(builder: (BuildContext context)=> SellForm(DropDownItemsList.houseList[index])));
 
           },
           child: Container(
-            width: 75,
+            width: 100,
+            height: 150,
             margin: EdgeInsets.only(left: 10, right: 10, top: 25),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Container(
-                  width: 75,
-                  height: 75,
+                  width: 100,
+                  height: 80,
+
                   decoration: BoxDecoration(
                     border: Border.all(
                         color: BrolineColor.brolineDarkYellow,

@@ -1,5 +1,6 @@
 import 'package:broline/Models/Colors.dart';
 import 'package:broline/Models/DropDownItemsList.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class SellForm extends StatefulWidget {
@@ -34,6 +35,7 @@ class _SellFormState extends State<SellForm> {
   String vaccinatedButton;
   String petSexButton;
   String petAge;
+  String houseTypeButton;
 
   List<DropdownMenuItem<String>> _buildDropDownMenuItems(
       List<String> listItems) {
@@ -46,7 +48,7 @@ class _SellFormState extends State<SellForm> {
   }
 
   Widget _buildButton(String hint, List<String> list) {
-    if (widget.categoryName == "Free Area") {
+    if (widget.categoryName == "Land") {
       if (hint == "Sell/Rent") {
         return DropdownButton(
           isExpanded: true,
@@ -76,36 +78,37 @@ class _SellFormState extends State<SellForm> {
           },
         );
       }
-    } else if (widget.categoryName == "Condominium" ||
-        widget.categoryName == "Sell") {
-      return DropdownButton(
-        isExpanded: true,
-        hint: Text(hint),
-        value: statusButton,
-        underline: Container(),
-        items: _buildDropDownMenuItems(list),
-        onChanged: (String value) {
-          setState(() {
-            statusButton = value;
-            hint = value;
-          });
-        },
-      );
-    } else if (widget.categoryName == "Rent") {
-      return DropdownButton(
-        isExpanded: true,
-        hint: Text(hint),
-        value: negotiationButton,
-        underline: Container(),
-        items: _buildDropDownMenuItems(list),
-        onChanged: (String value) {
-          setState(() {
-            negotiationButton = value;
-            hint = value;
-          });
-        },
-      );
-    } else if (widget.categoryName == "Hall") {
+    } else if (widget.categoryName == "House") {
+      if(hint == "Vila"){
+        return DropdownButton(
+          isExpanded: true,
+          hint: Text(hint),
+          value: houseTypeButton,
+          underline: Container(),
+          items: _buildDropDownMenuItems(list),
+          onChanged: (String value) {
+            setState(() {
+              houseTypeButton = value;
+              hint = value;
+            });
+          },
+        );
+      }else{
+        return DropdownButton(
+          isExpanded: true,
+          hint: Text(hint),
+          value: alternativeButton,
+          underline: Container(),
+          items: _buildDropDownMenuItems(list),
+          onChanged: (String value) {
+            setState(() {
+              alternativeButton = value;
+              hint = value;
+            });
+          },
+        );
+      }
+    }  else if (widget.categoryName == "Hall") {
       return DropdownButton(
         isExpanded: true,
         hint: Text(hint),
@@ -164,7 +167,21 @@ class _SellFormState extends State<SellForm> {
             });
           },
         );
-      } else if (hint == "Engine Status") {
+      } else if(hint == "Rent/Sell"){
+        return DropdownButton(
+          isExpanded: true,
+          hint: Text(hint),
+          value: alternativeButton,
+          underline: Container(),
+          items: _buildDropDownMenuItems(list),
+          onChanged: (String value) {
+            setState(() {
+              alternativeButton = value;
+              hint = value;
+            });
+          },
+        );
+      }else if (hint == "Engine Status") {
         return DropdownButton(
           isExpanded: true,
           hint: Text(hint),
@@ -194,7 +211,21 @@ class _SellFormState extends State<SellForm> {
         );
       }
     } else if (widget.categoryName == "Electronics") {
-      return DropdownButton(
+      if(hint == "New/Used"){
+        return DropdownButton(
+          isExpanded: true,
+          hint: Text(hint),
+          value: newOldButton,
+          underline: Container(),
+          items: _buildDropDownMenuItems(list),
+          onChanged: (String value) {
+            setState(() {
+              newOldButton = value;
+              hint = value;
+            });
+          },
+        );
+      }else{   return DropdownButton(
         isExpanded: true,
         hint: Text(hint),
         value: electricButton,
@@ -207,6 +238,8 @@ class _SellFormState extends State<SellForm> {
           });
         },
       );
+      }
+
     } else if (widget.categoryName == "Office and House Holds") {
       if (hint == "Status") {
         return DropdownButton(
@@ -495,8 +528,8 @@ class _SellFormState extends State<SellForm> {
           _buildForm("Sub City", Icons.house_outlined),
           _buildDropDownMenuButton("Sell/Rent", DropDownItemsList.alternative),
           _buildForm("Surface Area", Icons.landscape_outlined),
-          _buildForm("New Price", Icons.money),
-          _buildForm("Old Price", Icons.payments_outlined),
+          _buildForm("Actual Price", Icons.money),
+          _buildForm("Discounted Price", Icons.payments_outlined),
           _buildDropDownMenuButton(
               "Fixed/Negotiable", DropDownItemsList.negotiation),
           _buildForm("Seller Name", Icons.person),
@@ -504,8 +537,7 @@ class _SellFormState extends State<SellForm> {
           _buildPostAddButton()
         ],
       );
-    } else if (widget.categoryName == "Sell" ||
-        widget.categoryName == "Condominium") {
+    } else if (widget.categoryName == "House") {
       return ListView(
         children: [
           SizedBox(
@@ -514,32 +546,16 @@ class _SellFormState extends State<SellForm> {
           _buildForm("City", Icons.location_city_outlined),
           _buildForm("Sub City", Icons.house_outlined),
           _buildForm("Surface Area", Icons.landscape_outlined),
+          _buildDropDownMenuButton("Vila", DropDownItemsList.houseType),
+          _buildDropDownMenuButton("Rent/Sell", DropDownItemsList.alternative),
+          _buildForm("G+...", Icons.house_outlined),
           _buildForm("Rooms", Icons.room),
           _buildForm("Bed Rooms", Icons.king_bed),
           _buildForm("Bath Rooms", Icons.bathtub_outlined),
           _buildForm("Kitchens", Icons.kitchen_outlined),
-          _buildForm("New Price", Icons.money),
-          _buildForm("Old Price", Icons.payments_outlined),
+          _buildForm("Actual Price", Icons.money),
+          _buildForm("Discounted Price", Icons.payments_outlined),
           _buildDropDownMenuButton("Repair", DropDownItemsList.status),
-          _buildForm("Seller Name", Icons.person),
-          _buildForm("Phone Number", Icons.phone_android),
-          _buildPostAddButton()
-        ],
-      );
-    } else if (widget.categoryName == "Rent") {
-      return ListView(
-        children: [
-          SizedBox(
-            height: 10,
-          ),
-          _buildForm("City", Icons.location_city_outlined),
-          _buildForm("Sub City", Icons.house_outlined),
-          _buildForm("Surface Area", Icons.landscape_outlined),
-          _buildForm("Rooms", Icons.room),
-          _buildForm("New Price", Icons.money),
-          _buildForm("Old Price", Icons.payments_outlined),
-          _buildDropDownMenuButton(
-              "Negotiation", DropDownItemsList.negotiation),
           _buildForm("Seller Name", Icons.person),
           _buildForm("Phone Number", Icons.phone_android),
           _buildPostAddButton()
@@ -556,8 +572,8 @@ class _SellFormState extends State<SellForm> {
           _buildForm("Capacity", Icons.people_outline),
           _buildForm("Duration", Icons.access_time_outlined),
           _buildDropDownMenuButton("Service", DropDownItemsList.purpose),
-          _buildForm("New Price", Icons.money),
-          _buildForm("Old Price", Icons.payments_outlined),
+          _buildForm("Actual Price", Icons.money),
+          _buildForm("Discounted Price", Icons.payments_outlined),
           _buildForm("Seller Name", Icons.person),
           _buildForm("Phone Number", Icons.phone_android),
           _buildPostAddButton()
@@ -575,8 +591,8 @@ class _SellFormState extends State<SellForm> {
           _buildForm("Surface Area", Icons.landscape_outlined),
           _buildDropDownMenuButton(
               "Negotiation", DropDownItemsList.negotiation),
-          _buildForm("New Price", Icons.money),
-          _buildForm("Old Price", Icons.payments_outlined),
+          _buildForm("Actual Price", Icons.money),
+          _buildForm("Discounted Price", Icons.payments_outlined),
           _buildForm("Seller Name", Icons.person),
           _buildForm("Phone Number", Icons.phone_android),
           _buildPostAddButton()
@@ -598,8 +614,10 @@ class _SellFormState extends State<SellForm> {
           _buildDropDownMenuButton(
               "Engine Status", DropDownItemsList.engineStatus),
           _buildForm("Color", Icons.color_lens_outlined),
-          _buildForm("New Price", Icons.money),
-          _buildForm("Old Price", Icons.payments_outlined),
+          _buildDropDownMenuButton(
+              "Rent/Sell", DropDownItemsList.alternative),
+          _buildForm("Actual Price", Icons.money),
+          _buildForm("Discounted Price", Icons.payments_outlined),
           _buildForm("Seller Name", Icons.person),
           _buildForm("Phone Number", Icons.phone_android),
           _buildPostAddButton()
@@ -616,8 +634,10 @@ class _SellFormState extends State<SellForm> {
           _buildDropDownMenuButton(
               "Electronics", DropDownItemsList.electronicsList),
           _buildForm("Detail", Icons.description_outlined),
-          _buildForm("New Price", Icons.money),
-          _buildForm("Old Price", Icons.payments_outlined),
+          _buildDropDownMenuButton(
+              "New/Used", DropDownItemsList.newOld),
+          _buildForm("Actual Price", Icons.money),
+          _buildForm("Discounted Price", Icons.payments_outlined),
           _buildForm("Seller Name", Icons.person),
           _buildForm("Phone Number", Icons.phone_android),
           _buildPostAddButton()
@@ -637,8 +657,8 @@ class _SellFormState extends State<SellForm> {
           _buildForm("Phone Number", Icons.phone_android),
           _buildDropDownMenuButton(
               "Negotiation", DropDownItemsList.negotiation),
-          _buildForm("New Price", Icons.money),
-          _buildForm("Old Price", Icons.payments_outlined),
+          _buildForm("Actual Price", Icons.money),
+          _buildForm("Discounted Price", Icons.payments_outlined),
           _buildForm("Seller Name", Icons.person),
           _buildForm("Phone Number", Icons.phone_android),
           _buildPostAddButton()
@@ -655,8 +675,8 @@ class _SellFormState extends State<SellForm> {
           _buildDropDownMenuButton(
               "What to post?", DropDownItemsList.clothList),
           _buildForm("Detail", Icons.description_outlined),
-          _buildForm("New Price", Icons.money),
-          _buildForm("Old Price", Icons.payments_outlined),
+          _buildForm("Actual Price", Icons.money),
+          _buildForm("Discounted Price", Icons.payments_outlined),
           _buildDropDownMenuButton(
               "Negotiation", DropDownItemsList.negotiation),
           _buildForm("Seller Name", Icons.person),
@@ -673,10 +693,10 @@ class _SellFormState extends State<SellForm> {
           _buildForm("City", Icons.location_city_outlined),
           _buildForm("Sub City", Icons.house_outlined),
           _buildDropDownMenuButton(
-              "What to post?", DropDownItemsList.clothList),
+              "What to post?", DropDownItemsList.constructionList),
           _buildForm("Detail", Icons.description_outlined),
-          _buildForm("New Price", Icons.money),
-          _buildForm("Old Price", Icons.payments_outlined),
+          _buildForm("Actual Price", Icons.money),
+          _buildForm("Discounted Price", Icons.payments_outlined),
           _buildDropDownMenuButton(
               "Negotiation", DropDownItemsList.negotiation),
           _buildForm("Seller Name", Icons.person),
@@ -735,8 +755,8 @@ class _SellFormState extends State<SellForm> {
           _buildForm("Description", Icons.description_outlined),
           _buildDropDownMenuButton(
               "Negotiation", DropDownItemsList.negotiation),
-          _buildForm("New Price", Icons.money),
-          _buildForm("Old Price", Icons.payments_outlined),
+          _buildForm("Actual Price", Icons.money),
+          _buildForm("Discounted Price", Icons.payments_outlined),
           _buildForm("Name", Icons.person),
           _buildForm("Phone Number", Icons.phone_android),
           _buildPostAddButton()

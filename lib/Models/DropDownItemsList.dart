@@ -28,11 +28,21 @@ class DropDownItemsList {
     "Others"
   ];
   static const houseList = <String>[
-    "Free Area",
+    "Land",
     "House",
     "Hall",
-    "Condominium",
     "Store"
+  ];
+  static const houseType =<String>[
+    "Vila",
+    "Apartment",
+    "Condominium"
+    "G+1",
+    "G+2",
+    "G+3",
+    "G+4",
+    "Other"
+
   ];
   static const clothList = <String>[
     "Cloths",
@@ -103,5 +113,9 @@ class DropDownItemsList {
     "New",
     "Used",
   ];
-  static const constructionList = <String>[];
+  static const constructionList = <String>[
+"Heavy Vehicle",
+
+    "Steel"
+  ];
 }

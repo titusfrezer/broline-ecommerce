@@ -1,8 +1,11 @@
 import 'package:broline/Models/Colors.dart';
+import 'package:broline/Pages/ProductDetailPage.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_group_sliver/flutter_group_sliver.dart';
 
 class ProductList extends StatefulWidget {
+  final String subCategoryName;
+  ProductList(this.subCategoryName);
   @override
   _ProductListState createState() => _ProductListState();
 }
@@ -103,7 +106,7 @@ class _ProductListState extends State<ProductList> {
                     padding:
                     EdgeInsets.symmetric(horizontal: 15, vertical: 3),
                     decoration: BoxDecoration(
-                        color: BrolineColor.brolineLightGrey,
+                        color: BrolineColor.brolineWhite,
                         borderRadius: BorderRadius.circular(5)),
                     child: TextFormField(
                         decoration: InputDecoration(
@@ -121,7 +124,7 @@ class _ProductListState extends State<ProductList> {
                         )))
                     : isSterched == false
                     ? Text(
-                 "All Products",
+                  widget.subCategoryName,
                   style: TextStyle(color: BrolineColor.brolineWhite),
                 )
                     : Container(
@@ -129,7 +132,7 @@ class _ProductListState extends State<ProductList> {
                     padding: EdgeInsets.symmetric(
                         horizontal: 15, vertical: 3),
                     decoration: BoxDecoration(
-                        color: BrolineColor.brolineLightGrey,
+                        color: BrolineColor.brolineWhite,
                         borderRadius: BorderRadius.circular(5)),
                     child: TextFormField(
                         decoration: InputDecoration(
@@ -153,17 +156,27 @@ class _ProductListState extends State<ProductList> {
                       ? SizedBox()
                       : _buildSearch(false)
                 ],
-                backgroundColor: BrolineColor.brolineDarkBlue,
+                backgroundColor: innerBoxScrolled == true
+                    ? BrolineColor.brolineWhite
+                    : isSterched == true
+                    ? BrolineColor.brolineWhite
+                    : BrolineColor.brolineDarkBlue,
                 leading: IconButton(
                     icon: Icon(
                       Icons.arrow_back_ios_outlined,
-                      color: BrolineColor.brolineWhite,
+                      color: innerBoxScrolled == true
+                          ? BrolineColor.brolineDarkBlue
+                          : isSterched == true
+                          ? BrolineColor.brolineDarkBlue
+                          : BrolineColor.brolineWhite,
                     ),
                     onPressed: () {
                       setState(() {
-                        if (isSterched == true) {
+                        if (isSterched == true && innerBoxScrolled == true) {
+                          Navigator.of(context).pop();
+                        } else if (isSterched == true) {
                           title = Text(
-                           "All Products",
+                            widget.subCategoryName,
                             style: TextStyle(color: BrolineColor.brolineWhite),
                           );
                           isSterched = false;
@@ -187,70 +200,77 @@ class _ProductListState extends State<ProductList> {
                        mainAxisSpacing: 2),
                    delegate: SliverChildBuilderDelegate(
                          (BuildContext context, int index) {
-                       return Card(
-                         color: BrolineColor.brolineWhite,
-                         shape: RoundedRectangleBorder(
-                           borderRadius: BorderRadius.all(Radius.circular(12)),
-                         ),
-                         child: Container(
-                           padding: EdgeInsets.symmetric(
-                             horizontal: 20,
+                       return InkWell(
+                         onTap: (){
+                           Navigator.of(context).push(MaterialPageRoute(builder: (BuildContext context){
+                             return ProductDetailPage();
+                           }));
+                         },
+                         child: Card(
+                           color: BrolineColor.brolineWhite,
+                           shape: RoundedRectangleBorder(
+                             borderRadius: BorderRadius.all(Radius.circular(12)),
                            ),
-                           child: Column(
-                             // crossAxisAlignment: CrossAxisAlignment.start,
-                             mainAxisAlignment: MainAxisAlignment.spaceAround,
-                             children: [
-                               Padding(
-                                 padding: const EdgeInsets.symmetric(
-                                     horizontal: 10, vertical: 5),
-                                 child: Image.asset(
-                                   "assets/images/broline.jfif",
-                                   fit: BoxFit.cover,
-                                   height: 100,
-                                 ),
-                               ),
-                               Text(
-                                 "Omen Galaxy S10",
-                                 style: TextStyle(
-                                     color: BrolineColor.brolineBlack,
-                                     fontWeight: FontWeight.bold,
-                                     fontSize: 17),
-                                 maxLines: 2,
-                                 overflow: TextOverflow.ellipsis,
-                               ),
-                               ListTile(
-                                 contentPadding: EdgeInsets.symmetric(
-                                     horizontal: 0, vertical: 0),
-                                 trailing: Container(
-                                   width: 55,
-                                   padding: EdgeInsets.only(
-                                       left: 20, top: 5, bottom: 5),
-                                   decoration: BoxDecoration(
-                                       color: BrolineColor.brolineDarkBlue,
-                                       borderRadius: BorderRadius.only(
-                                           topLeft: Radius.elliptical(50, 35),
-                                           bottomLeft: Radius.circular(100))),
-                                   child: Text(
-                                     "20% off",
-                                     maxLines: 2,
-                                     style: TextStyle(
-                                         color: BrolineColor.brolineWhite),
+                           child: Container(
+                             padding: EdgeInsets.symmetric(
+                               horizontal: 20,
+                             ),
+                             child: Column(
+                               // crossAxisAlignment: CrossAxisAlignment.start,
+                               mainAxisAlignment: MainAxisAlignment.spaceAround,
+                               children: [
+                                 Padding(
+                                   padding: const EdgeInsets.symmetric(
+                                       horizontal: 10, vertical: 5),
+                                   child: Image.asset(
+                                     "assets/images/broline.jfif",
+                                     fit: BoxFit.cover,
+                                     height: 100,
                                    ),
                                  ),
-                                 title: Text(
-                                   "\$300",
+                                 Text(
+                                   "Omen Galaxy S10",
                                    style: TextStyle(
-                                       color: BrolineColor.brolineDarkBlue,
-                                       fontWeight: FontWeight.w700),
+                                       color: BrolineColor.brolineBlack,
+                                       fontWeight: FontWeight.bold,
+                                       fontSize: 17),
+                                   maxLines: 2,
+                                   overflow: TextOverflow.ellipsis,
                                  ),
-                                 subtitle: Text(
-                                   "\$350",
-                                   style: TextStyle(
-                                       color: BrolineColor.brolineDarkYellow,
-                                       decoration: TextDecoration.lineThrough),
-                                 ),
-                               )
-                             ],
+                                 ListTile(
+                                   contentPadding: EdgeInsets.symmetric(
+                                       horizontal: 0, vertical: 0),
+                                   trailing: Container(
+                                     width: 55,
+                                     padding: EdgeInsets.only(
+                                         left: 20, top: 5, bottom: 5),
+                                     decoration: BoxDecoration(
+                                         color: BrolineColor.brolineDarkBlue,
+                                         borderRadius: BorderRadius.only(
+                                             topLeft: Radius.elliptical(50, 35),
+                                             bottomLeft: Radius.circular(100))),
+                                     child: Text(
+                                       "20% off",
+                                       maxLines: 2,
+                                       style: TextStyle(
+                                           color: BrolineColor.brolineWhite),
+                                     ),
+                                   ),
+                                   title: Text(
+                                     "\$300",
+                                     style: TextStyle(
+                                         color: BrolineColor.brolineDarkBlue,
+                                         fontWeight: FontWeight.w700),
+                                   ),
+                                   subtitle: Text(
+                                     "\$350",
+                                     style: TextStyle(
+                                         color: BrolineColor.brolineDarkYellow,
+                                         decoration: TextDecoration.lineThrough),
+                                   ),
+                                 )
+                               ],
+                             ),
                            ),
                          ),
                        );

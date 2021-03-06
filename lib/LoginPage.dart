@@ -89,7 +89,7 @@ class _LoginPageState extends State<LoginPage> {
                   child: RaisedButton(
                     shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(20)),
-                    padding: EdgeInsets.symmetric(horizontal: 100),
+
                     textColor: BrolineColor.brolineWhite,
                     color: BrolineColor.brolineDarkBlue,
                     child: Text(
@@ -158,7 +158,8 @@ class _LoginPageState extends State<LoginPage> {
                   alignment: Alignment.center,
                   margin: EdgeInsets.symmetric(horizontal: 50),
                   child: FlatButton(
-                      padding: EdgeInsets.symmetric(horizontal: 50),
+
+                      padding: EdgeInsets.symmetric(horizontal: 15),
                       height: 45,
                       shape: RoundedRectangleBorder(
                           side: BorderSide(color: BrolineColor.brolineDarkBlue),
@@ -168,6 +169,7 @@ class _LoginPageState extends State<LoginPage> {
                         auth.Login();
                       },
                       child: Row(
+
                         children: [
                           Image.asset(
                             "assets/images/google.png",

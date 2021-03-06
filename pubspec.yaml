@@ -38,6 +38,8 @@ dependencies:
   google_sign_in:
   cloud_firestore:
   pin_code_fields:
+  flutter_native_splash:
+
 dev_dependencies:
   flutter_test:
     sdk: flutter
@@ -46,6 +48,7 @@ dev_dependencies:
 # following page: https://dart.dev/tools/pub/pubspec
 
 # The following section is specific to Flutter.
+
 flutter:
 
   # The following line ensures that the Material Icons font is
@@ -86,6 +89,9 @@ flutter:
     - assets/images/sell.jfif
     - assets/images/flag.jfif
     - assets/images/houseBackground.jfif
+    - assets/images/SubCategory/landCartoon.jfif
+    - assets/images/SubCategory/storeCartoon.png
+    - assets/images/SubCategory/hallCartoon.jfif
   #   - images/a_dot_ham.jpe    - assets/images/brolineSplashCroped.jpgg
 
   # An image asset can refer to one or more resolution-specific "variants", see

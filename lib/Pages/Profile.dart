@@ -117,11 +117,28 @@ class _ProfileState extends State<Profile> {
         margin: EdgeInsets.symmetric(vertical: 5),
         child: ListTile(
           leading: Icon(
-            Icons.post_add,
+            Icons.settings,
             size: 25,
           ),
           title: Text(
             "Setting",
+            style: TextStyle(fontSize: 18),
+          ),
+        ),
+      ),
+    ),
+    InkWell(
+      onTap: () {},
+      child: Container(
+        height: 60,
+        margin: EdgeInsets.symmetric(vertical: 5),
+        child: ListTile(
+          leading: Icon(
+            Icons.language,
+            size: 25,
+          ),
+          title: Text(
+            "Language",
             style: TextStyle(fontSize: 18),
           ),
         ),

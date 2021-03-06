@@ -229,7 +229,7 @@ class _SubCategoryPageState extends State<SubCategoryPage> {
                     onTap: () {
                       Navigator.of(context).push(
                           MaterialPageRoute(builder: (BuildContext context) {
-                        return ProductList();
+                        return ProductList(subCategory[index].categoryName);
                       }));
                     },
                     child: Container(
