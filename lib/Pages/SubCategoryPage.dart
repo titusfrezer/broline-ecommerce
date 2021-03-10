@@ -219,6 +219,7 @@ class _SubCategoryPageState extends State<SubCategoryPage> {
           },
           body: CustomScrollView(
             slivers: [
+              SliverPadding(padding: EdgeInsets.symmetric(vertical: 10)),
               SliverGrid(
                 gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                   crossAxisCount: 3,
@@ -234,13 +235,13 @@ class _SubCategoryPageState extends State<SubCategoryPage> {
                     },
                     child: Container(
                       width: 75,
-                      margin: EdgeInsets.only(left: 10, right: 10, top: 25),
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           Container(
                             width: 75,
                             height: 75,
+                            margin: EdgeInsets.only(bottom: 5),
                             decoration: BoxDecoration(
                               border: Border.all(
                                   color: BrolineColor.brolineDarkYellow,
@@ -257,14 +258,16 @@ class _SubCategoryPageState extends State<SubCategoryPage> {
                               ),
                             ),
                           ),
-                          Text(
-                            subCategory[index].categoryName,
-                            maxLines: 1,
-                            textAlign: TextAlign.center,
-                            overflow: TextOverflow.ellipsis,
-                            style: TextStyle(
-                                color: BrolineColor.brolineBlack,
-                                fontWeight: FontWeight.bold),
+                          Expanded(
+                            child: Text(
+                              subCategory[index].categoryName,
+                              maxLines: 1,
+                              textAlign: TextAlign.center,
+                              overflow: TextOverflow.ellipsis,
+                              style: TextStyle(
+                                  color: BrolineColor.brolineBlack,
+                                  fontWeight: FontWeight.bold),
+                            ),
                           )
                         ],
                       ),

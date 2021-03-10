@@ -85,6 +85,7 @@ class _ProfileState extends State<Profile> {
           leading: Icon(
             Icons.post_add,
             size: 25,
+            color: BrolineColor.brolineDarkYellow,
           ),
           title: Text(
             "My Post",
@@ -102,6 +103,7 @@ class _ProfileState extends State<Profile> {
           leading: Icon(
             Icons.shopping_cart,
             size: 25,
+            color: BrolineColor.brolineDarkYellow,
           ),
           title: Text(
             "My Cart",
@@ -119,6 +121,7 @@ class _ProfileState extends State<Profile> {
           leading: Icon(
             Icons.settings,
             size: 25,
+            color: BrolineColor.brolineDarkYellow,
           ),
           title: Text(
             "Setting",
@@ -136,6 +139,7 @@ class _ProfileState extends State<Profile> {
           leading: Icon(
             Icons.language,
             size: 25,
+            color: BrolineColor.brolineDarkYellow,
           ),
           title: Text(
             "Language",
@@ -155,6 +159,7 @@ class _ProfileState extends State<Profile> {
           leading: Icon(
             Icons.login_outlined,
             size: 25,
+            color: BrolineColor.brolineDarkYellow,
           ),
           title: Text(
             "LogOut",

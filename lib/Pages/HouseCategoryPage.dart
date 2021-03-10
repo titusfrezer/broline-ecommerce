@@ -12,7 +12,9 @@ class HouseCategoryPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: Text("Select Sub Category"),backgroundColor: BrolineColor.brolineDarkBlue,),
-      body: GridView.builder(gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+      body: GridView.builder(
+
+        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
         crossAxisCount: 2,
 
         childAspectRatio:1.3
@@ -29,15 +31,16 @@ class HouseCategoryPage extends StatelessWidget {
 
           },
           child: Container(
+
             width: 100,
-            height: 150,
-            margin: EdgeInsets.only(left: 10, right: 10, top: 25),
+           margin: EdgeInsets.only(top: 25),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Container(
                   width: 100,
                   height: 80,
+                  margin: EdgeInsets.only(bottom: 10),
 
                   decoration: BoxDecoration(
                     border: Border.all(
@@ -55,14 +58,16 @@ class HouseCategoryPage extends StatelessWidget {
                     ),
                   ),
                 ),
-                Text(
-                  Lists.houseList[index].categoryName,
-                  maxLines: 1,
-                  textAlign: TextAlign.center,
-                  overflow: TextOverflow.ellipsis,
-                  style: TextStyle(
-                      color: BrolineColor.brolineBlack,
-                      fontWeight: FontWeight.bold),
+                Expanded(
+                  child: Text(
+                    Lists.houseList[index].categoryName,
+                    maxLines: 1,
+                    textAlign: TextAlign.center,
+                    overflow: TextOverflow.ellipsis,
+                    style: TextStyle(
+                        color: BrolineColor.brolineBlack,
+                        fontWeight: FontWeight.bold),
+                  ),
                 )
               ],
             ),
