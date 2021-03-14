@@ -27,30 +27,19 @@ class _ProductDetailPageState extends State<ProductDetailPage> {
           SliverToBoxAdapter(
             child: Column(children: [
               Container(
-                  height: 250,
-                  child: Carousel(
-                    boxFit: BoxFit.cover,
-                    autoplay: false,
-                    dotBgColor: Colors.transparent,
-                    dotIncreaseSize: 1,
-                    dotVerticalPadding: 5,
-                    images: Lists.imgList.map((item) {
-                      item = boxImage;
-                      return Container(
-                        child: FadeInImage(
-                          fit: BoxFit.cover,
-                          width: double.maxFinite,
-                          placeholder: AssetImage("assets/images/laptop.jfif"),
-                          image: NetworkImage(
-                            item,
-                          ),
-                        ),
-                      );
-                    }).toList(),
-                  )),
+                height: 200,
+                child: FadeInImage(
+                  fit: BoxFit.cover,
+                  width: double.maxFinite,
+                  placeholder: AssetImage("assets/images/laptop.jfif"),
+                  image: NetworkImage(
+                    boxImage,
+                  ),
+                ),
+              ),
               Container(
                 color: BrolineColor.brolineWhite,
-                padding: EdgeInsets.only(top: 20,bottom: 20),
+                padding: EdgeInsets.only(top: 20, bottom: 20),
                 height: 100,
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
@@ -68,7 +57,7 @@ class _ProductDetailPageState extends State<ProductDetailPage> {
                 ),
               ),
               Container(
-                height: 300,
+                height: 250,
                 width: double.maxFinite,
                 margin: EdgeInsets.symmetric(horizontal: 10, vertical: 20),
                 padding: EdgeInsets.symmetric(horizontal: 20, vertical: 20),
@@ -84,7 +73,7 @@ class _ProductDetailPageState extends State<ProductDetailPage> {
                     Text(
                       "Omen Galaxy S10",
                       style: TextStyle(
-                          color: BrolineColor.brolineDarkBlue,
+                          color: BrolineColor.brolineBlack,
                           fontWeight: FontWeight.bold,
                           fontSize: 25),
                       maxLines: 2,
@@ -113,15 +102,16 @@ class _ProductDetailPageState extends State<ProductDetailPage> {
                         ),
                       ),
                       title: Text(
-                        "\$300",
+                        "300 Birr",
                         style: TextStyle(
                             color: BrolineColor.brolineDarkBlue,
                             fontWeight: FontWeight.w700,
                             fontSize: 20),
                       ),
                       subtitle: Text(
-                        "\$350",
+                        "350 Birr",
                         style: TextStyle(
+                          color: BrolineColor.brolineDarkYellow,
                             decoration: TextDecoration.lineThrough,
                             fontSize: 15),
                       ),
@@ -129,10 +119,10 @@ class _ProductDetailPageState extends State<ProductDetailPage> {
                   ],
                 ),
               ),
-            Container(
-                height: 300,
+              Container(
+                height: 250,
                 width: double.maxFinite,
-                margin: EdgeInsets.only(left: 10,right: 10,bottom: 20 ),
+                margin: EdgeInsets.only(left: 10, right: 10, bottom: 20),
                 padding: EdgeInsets.symmetric(horizontal: 20, vertical: 20),
                 decoration: BoxDecoration(
                   color: BrolineColor.brolineWhite,
@@ -140,39 +130,51 @@ class _ProductDetailPageState extends State<ProductDetailPage> {
                       bottomLeft: Radius.circular(25),
                       bottomRight: Radius.circular(25)),
                 ),
-            child: Text("Description ",style: TextStyle(fontSize: 20),
-                ),),
+                child: Text(
+                  "Description ",
+                  style: TextStyle(fontSize: 20),
+                ),
+              ),
               Padding(
-                padding: const EdgeInsets.only(left: 10,right: 10),
+                padding: EdgeInsets.symmetric(horizontal: 10),
                 child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
                     SizedBox(
-                      width: 125,
+                      width: 200,
                       child: RaisedButton(
-
                         padding: EdgeInsets.symmetric(
                           vertical: 10,
                         ),
                         color: BrolineColor.brolineDarkBlue,
                         textColor: BrolineColor.brolineWhite,
                         shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(5)),
+                            borderRadius: BorderRadius.only(
+                                topLeft: Radius.circular(20),
+                                bottomLeft: Radius.circular(20))),
                         onPressed: () {},
-                        child: Icon(Icons.call),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceAround,
+                          children: [
+                            Icon(Icons.call),
+                            Text(
+                              "Call",
+                              style: TextStyle(
+                                  color: BrolineColor.brolineWhite,
+                                  fontSize: 18),
+                            ),
+                          ],
+                        ),
                       ),
                     ),
-                    Text("Contact",style: TextStyle(fontSize: 16),),
-                    SizedBox(
-                      width: 125,
-                      child: RaisedButton(
+                    Expanded(
+                      child: FlatButton(
+                        // shape: RoundedRectangleBorder(side: BorderSide(color: BrolineColor.brolineDarkBlue,width: 0.25)),
                         padding: EdgeInsets.symmetric(
                           vertical: 10,
                         ),
-                        color: BrolineColor.brolineDarkBlue,
-                        textColor: BrolineColor.brolineWhite,
-                        shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(5)),
+                        color: BrolineColor.brolineWhite,
+                        textColor: BrolineColor.brolineBlack,
+
                         onPressed: () {},
                         child: Icon(Icons.message),
                       ),
@@ -180,7 +182,9 @@ class _ProductDetailPageState extends State<ProductDetailPage> {
                   ],
                 ),
               ),
-              SizedBox(height: 20,)
+              SizedBox(
+                height: 20,
+              )
             ]),
           )
         ],

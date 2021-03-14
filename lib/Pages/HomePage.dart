@@ -29,9 +29,10 @@ class _HomePageState extends State<HomePage> {
         scrollDirection: Axis.vertical,
         floatHeaderSlivers: false,
         headerSliverBuilder: (BuildContext context, bool innerBoxScrolled) {
-          print(innerBoxScrolled);
+
           return <Widget>[
             SliverAppBar(
+
               elevation: 0.0,
               expandedHeight: 200,
               backgroundColor: BrolineColor.brolineWhite,
@@ -41,6 +42,7 @@ class _HomePageState extends State<HomePage> {
                 return FlexibleSpaceBar(
                   collapseMode: CollapseMode.parallax,
                   background: Container(
+
                     color: Colors.white,
                     child: Carousel(
                       boxFit: BoxFit.cover,
@@ -80,6 +82,7 @@ class _HomePageState extends State<HomePage> {
                 ? SliverPadding(
                     padding: EdgeInsets.symmetric(vertical: 20),
                     sliver: SliverAppBar(
+
                       floating: false,
                       pinned: true,
                       elevation: 0.0,
@@ -149,80 +152,98 @@ class _HomePageState extends State<HomePage> {
             ),
             // Replace your ListView.builder with this:
             SliverGroupBuilder(
-              margin: EdgeInsets.only(left: 10, right: 10, top: 25),
+             // margin: EdgeInsets.only(left: 10, right: 10, top: 25),
               child: SliverGrid(
                 gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                    childAspectRatio: 0.75,
+                    childAspectRatio: 0.6,
                     crossAxisCount: 2,
                     crossAxisSpacing: 2,
                     mainAxisSpacing: 2),
                 delegate: SliverChildBuilderDelegate(
                   (BuildContext context, int index) {
-                    return Card(
-                      color: BrolineColor.brolineWhite,
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.all(Radius.circular(12)),
-                      ),
-                      child: Container(
-                        padding: EdgeInsets.symmetric(
-                          horizontal: 20,
+                    return InkWell(
+                      onTap: () {
+                        Navigator.of(context)
+                            .push(MaterialPageRoute(builder: (BuildContext context) {
+                          return ProductDetailPage(
+                             );
+                        }));
+                      },
+                      child: Card(
+                        color: BrolineColor.brolineWhite,
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.all(Radius.circular(12)),
                         ),
-                        child: Column(
-                          // crossAxisAlignment: CrossAxisAlignment.start,
-                          mainAxisAlignment: MainAxisAlignment.spaceAround,
-                          children: [
-                            Padding(
-                              padding: const EdgeInsets.symmetric(
-                                  horizontal: 10, vertical: 5),
-                              child: Image.asset(
-                                "assets/images/broline.jfif",
-                                fit: BoxFit.cover,
-                                height: 100,
-                              ),
-                            ),
-                            Text(
-                              "Omen Galaxy S10",
-                              style: TextStyle(
-                                  color: BrolineColor.brolineBlack,
-                                  fontWeight: FontWeight.bold,
-                                  fontSize: 17),
-                              maxLines: 2,
-                              overflow: TextOverflow.ellipsis,
-                            ),
-                            ListTile(
-                              contentPadding: EdgeInsets.symmetric(
-                                  horizontal: 0, vertical: 0),
-                              trailing: Container(
-                                width: 55,
-                                padding: EdgeInsets.only(
-                                    left: 20, top: 5, bottom: 5),
-                                decoration: BoxDecoration(
-                                    color: BrolineColor.brolineDarkBlue,
+                        child: Container(
+                          padding: EdgeInsets.symmetric(
+                            horizontal: 10,
+                          ),
+                          child: Column(
+                             crossAxisAlignment: CrossAxisAlignment.start,
+                            mainAxisAlignment: MainAxisAlignment.spaceAround,
+                            children: [
+
+                              Padding(
+                                padding:  EdgeInsets.only(top: 10),
+                                child: ClipRRect(
+                                  child: Image.asset(
+                                      "assets/images/broline.jfif",
+                                      fit: BoxFit.cover,
+                                      height: 150,
+                                      width: double.maxFinite,
+                                    ),
                                     borderRadius: BorderRadius.only(
-                                        topLeft: Radius.elliptical(50, 35),
-                                        bottomLeft: Radius.circular(100))),
-                                child: Text(
-                                  "20% off",
-                                  maxLines: 2,
-                                  style: TextStyle(
-                                      color: BrolineColor.brolineWhite),
+                                        topLeft: Radius.circular(12),
+                                        topRight: Radius.circular(12))
+
                                 ),
                               ),
-                              title: Text(
-                                "300 Birr",
 
+                              Text(
+                                "Omen Galaxy S10",
                                 style: TextStyle(
-                                    color: BrolineColor.brolineDarkBlue,
-                                    fontWeight: FontWeight.w700),
+                                    color: BrolineColor.brolineBlack,
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: 17),
+                                maxLines: 2,
+                                overflow: TextOverflow.ellipsis,
                               ),
-                              subtitle: Text(
-                                "350 Birr",
-                                style: TextStyle(
-                                    color: BrolineColor.brolineDarkYellow,
-                                    decoration: TextDecoration.lineThrough),
-                              ),
-                            )
-                          ],
+                              ListTile(
+                                contentPadding: EdgeInsets.symmetric(
+                                    horizontal: 0, vertical: 0),
+                                trailing: Container(
+                                  width: 50,
+                                  padding: EdgeInsets.only(
+                                      left: 20, top: 5, bottom: 5),
+                                  decoration: BoxDecoration(
+                                      color: BrolineColor.brolineDarkBlue,
+                                      borderRadius: BorderRadius.only(
+                                          topLeft: Radius.elliptical(50, 35),
+                                          bottomLeft: Radius.circular(100))),
+                                  child: Text(
+                                    "20% off",
+                                    maxLines: 2,
+                                    style: TextStyle(
+                                        color: BrolineColor.brolineWhite),
+                                  ),
+                                ),
+                                title: Text(
+                                  "300 Birr",
+                                  maxLines: 2,
+                                  overflow: TextOverflow.fade,
+                                  style: TextStyle(
+                                      color: BrolineColor.brolineDarkBlue,
+                                      fontWeight: FontWeight.w700),
+                                ),
+                                subtitle: Text(
+                                  "350 Birr",
+                                  style: TextStyle(
+                                      color: BrolineColor.brolineDarkYellow,
+                                      decoration: TextDecoration.lineThrough),
+                                ),
+                              )
+                            ],
+                          ),
                         ),
                       ),
                     );
@@ -364,28 +385,37 @@ class _HomePageState extends State<HomePage> {
                           MaterialPageRoute(builder: (BuildContext context) {
                         return ProductDetailPage();
                       })),
-                      child: Card(
+                      child:Card(
                         color: BrolineColor.brolineWhite,
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.all(Radius.circular(12)),
                         ),
                         child: Container(
                           padding: EdgeInsets.symmetric(
-                            horizontal: 20,
+                            horizontal: 10,
                           ),
                           child: Column(
-                            // crossAxisAlignment: CrossAxisAlignment.start,
+                            crossAxisAlignment: CrossAxisAlignment.start,
                             mainAxisAlignment: MainAxisAlignment.spaceAround,
                             children: [
+
                               Padding(
-                                padding: const EdgeInsets.symmetric(
-                                    horizontal: 10, vertical: 5),
-                                child: Image.asset(
-                                  "assets/images/broline.jfif",
-                                  fit: BoxFit.cover,
-                                  height: 100,
+                                padding:  EdgeInsets.only(top: 10),
+                                child: ClipRRect(
+
+                                    child: Image.asset(
+                                      "assets/images/broline.jfif",
+                                      fit: BoxFit.cover,
+                                      height: 150,
+                                      width: double.maxFinite,
+                                    ),
+                                    borderRadius: BorderRadius.only(
+                                        topLeft: Radius.circular(12),
+                                        topRight: Radius.circular(12)),
+
                                 ),
                               ),
+
                               Text(
                                 "Omen Galaxy S10",
                                 style: TextStyle(
@@ -399,7 +429,7 @@ class _HomePageState extends State<HomePage> {
                                 contentPadding: EdgeInsets.symmetric(
                                     horizontal: 0, vertical: 0),
                                 trailing: Container(
-                                  width: 55,
+                                  width: 50,
                                   padding: EdgeInsets.only(
                                       left: 20, top: 5, bottom: 5),
                                   decoration: BoxDecoration(
@@ -415,13 +445,15 @@ class _HomePageState extends State<HomePage> {
                                   ),
                                 ),
                                 title: Text(
-                                  "\$300",
+                                  "300 Birr",
+                                  maxLines: 2,
+                                  overflow: TextOverflow.fade,
                                   style: TextStyle(
                                       color: BrolineColor.brolineDarkBlue,
                                       fontWeight: FontWeight.w700),
                                 ),
                                 subtitle: Text(
-                                  "\$350",
+                                  "350 Birr",
                                   style: TextStyle(
                                       color: BrolineColor.brolineDarkYellow,
                                       decoration: TextDecoration.lineThrough),
@@ -430,7 +462,7 @@ class _HomePageState extends State<HomePage> {
                             ],
                           ),
                         ),
-                      ),
+                      )
                     );
                   }),
             ),

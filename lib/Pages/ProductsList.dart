@@ -213,21 +213,29 @@ class _ProductListState extends State<ProductList> {
                            ),
                            child: Container(
                              padding: EdgeInsets.symmetric(
-                               horizontal: 20,
+                               horizontal: 10,
                              ),
                              child: Column(
-                               // crossAxisAlignment: CrossAxisAlignment.start,
+                               crossAxisAlignment: CrossAxisAlignment.start,
                                mainAxisAlignment: MainAxisAlignment.spaceAround,
                                children: [
+
                                  Padding(
-                                   padding: const EdgeInsets.symmetric(
-                                       horizontal: 10, vertical: 5),
-                                   child: Image.asset(
-                                     "assets/images/broline.jfif",
-                                     fit: BoxFit.cover,
-                                     height: 100,
+                                   padding:  EdgeInsets.only(top: 10),
+                                   child: ClipRRect(
+                                       child: Image.asset(
+                                         "assets/images/broline.jfif",
+                                         fit: BoxFit.cover,
+                                         height: 150,
+                                         width: double.maxFinite,
+                                       ),
+                                       borderRadius: BorderRadius.only(
+                                           topLeft: Radius.circular(12),
+                                           topRight: Radius.circular(12))
+
                                    ),
                                  ),
+
                                  Text(
                                    "Omen Galaxy S10",
                                    style: TextStyle(
@@ -241,7 +249,7 @@ class _ProductListState extends State<ProductList> {
                                    contentPadding: EdgeInsets.symmetric(
                                        horizontal: 0, vertical: 0),
                                    trailing: Container(
-                                     width: 55,
+                                     width: 50,
                                      padding: EdgeInsets.only(
                                          left: 20, top: 5, bottom: 5),
                                      decoration: BoxDecoration(
@@ -257,13 +265,15 @@ class _ProductListState extends State<ProductList> {
                                      ),
                                    ),
                                    title: Text(
-                                     "\$300",
+                                     "300 Birr",
+                                     maxLines: 2,
+                                     overflow: TextOverflow.fade,
                                      style: TextStyle(
                                          color: BrolineColor.brolineDarkBlue,
                                          fontWeight: FontWeight.w700),
                                    ),
                                    subtitle: Text(
-                                     "\$350",
+                                     "350 Birr",
                                      style: TextStyle(
                                          color: BrolineColor.brolineDarkYellow,
                                          decoration: TextDecoration.lineThrough),

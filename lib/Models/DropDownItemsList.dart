@@ -20,37 +20,31 @@ class DropDownItemsList {
     "Mobile Phone",
     "Head Phone",
     "Speaker",
-    "Electronics Spare Parts",
+    "Accessories",
     "Printer and Scanner",
     "Video Game",
     "Television",
     "Satellite Dish and Accessories",
     "Others"
   ];
-  static const houseList = <String>[
-    "Land",
+  static const houseList = <String>["Land", "House", "Hall", "Store"];
+  static const houseOffice = <String>[
     "House",
-    "Hall",
-    "Store"
+    "Office",
   ];
-  static const houseType =<String>[
+  static const houseType = <String>[
     "Vila",
     "Apartment",
-    "Condominium"
-    "G+1",
-    "G+2",
-    "G+3",
-    "G+4",
+    "Condominium",
     "Other"
-
   ];
   static const clothList = <String>[
-    "Cloths",
+    "Clothes",
     "Shoes",
     "Bags",
     "Watch",
     "Jewelry",
-    "Wedding Cloths",
+    "Wedding Clothes",
     "Others"
   ];
   static const entertainmentList = <String>[
@@ -90,32 +84,44 @@ class DropDownItemsList {
     "Partial Repair",
     "Full Repair",
   ];
-  static const goodsStatus = <String>["New", "Slightly Used", "Un repaired"];
+  static const goodsStatus = <String>["New", "Slightly Used", "Repaired"];
   static const serviceType = <String>["Order", "Reservation"];
-  static const petSex = <String>["Male", "Female"];
-  static const petAge = <String>["0-3 Year", "4-10 Year", "11-20 Year"];
+  static const petSex = <String>["Male", "Female","Unknown"];
+  static const petAge = <String>["0-3 Year", "4-10 Year", "11-20 Year","Unknown"];
   static const whatToServe = <String>["Food", "Drinks"];
-  static const vaccinated = <String>["Vaccinated", "Not Vaccinated"];
+  static const vaccinated = <String>["Vaccinated", "Un vaccinated","None"];
   static const quantity = <String>["For organization", "For Personal"];
   static const paymentMethod = <String>["CBE", "Hello Cash", "Awash Bank"];
   static const alternative = <String>["Sell", "Rent"];
   static const negotiation = <String>["Negotiable", "Fixed"];
 
-  static const status = <String>["Repair", "No Repair"];
+  static const status = <String>["Need Repair", "No Repair"];
   static const purpose = <String>[
-    "Meting",
+    "Meeting",
     "Wedding",
-    "BirthDay",
+    "Birthday",
     "Graduation",
     "Other"
   ];
-  static const newOld = <String>[
-    "New",
-    "Used",
+  static const newOld = <String>["New", "Used", "Slightly Used"];
+  static const transmission = <String>[
+    "Automatic",
+    "Manual",
+  ];
+  static const fuelType = <String>[
+    "Gasoline",
+    "Regular",
   ];
   static const constructionList = <String>[
-"Heavy Vehicle",
-
+    "Heavy Vehicle",
+    "Electrical Equipment",
+    "Hand Tools",
+    "Building Material",
     "Steel"
+  ];
+  static const foodBeverage = <String>[
+    "Food",
+    "Beverage",
+
   ];
 }

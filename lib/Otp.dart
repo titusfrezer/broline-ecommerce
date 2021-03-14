@@ -53,7 +53,7 @@ class Otp extends StatelessWidget {
             ],
           ),
           Padding(
-              padding: EdgeInsets.symmetric(horizontal: 50),
+              padding: EdgeInsets.symmetric(horizontal: MediaQuery.of(context).size.width * 0.1),
               child: PinCodeTextField(
                 onChanged: (value) {},
                 appContext: context,
@@ -91,7 +91,7 @@ class Otp extends StatelessWidget {
             child: RaisedButton(
               shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(20)),
-              padding: EdgeInsets.symmetric(horizontal: 100),
+            //  padding: EdgeInsets.symmetric(horizontal: 100),
               textColor: BrolineColor.brolineWhite,
               color: BrolineColor.brolineDarkBlue,
               child: Text("Verify" , style: TextStyle(fontSize: 16),),

@@ -24,7 +24,11 @@ void main() async {
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
+        title: 'Broline',
         theme: ThemeData(
+
+          primaryColor: BrolineColor.brolineDarkBlue,
+          fontFamily: 'brolineFont',
           primarySwatch: Colors.blue,
           visualDensity: VisualDensity.adaptivePlatformDensity,
         ),

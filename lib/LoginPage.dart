@@ -52,7 +52,7 @@ class _LoginPageState extends State<LoginPage> {
             // ),
             Container(
               margin: EdgeInsets.symmetric(horizontal: 50),
-              padding: EdgeInsets.symmetric(horizontal: 15,),
+             // padding: EdgeInsets.symmetric(horizontal: 15,),
               decoration: BoxDecoration(
                   border: Border.all(color: BrolineColor.brolineDarkBlue),
                   borderRadius: BorderRadius.circular(25)),
@@ -61,7 +61,7 @@ class _LoginPageState extends State<LoginPage> {
                 keyboardType: TextInputType.number,
 
                 decoration: InputDecoration(
-                  contentPadding:   EdgeInsets.symmetric(horizontal: 15,vertical: 15),
+                  contentPadding:   EdgeInsets.symmetric(vertical: 15),
 
                   border: InputBorder.none,
                   focusedBorder: InputBorder.none,
@@ -77,7 +77,7 @@ class _LoginPageState extends State<LoginPage> {
                     Icons.phone_android,
                     color: BrolineColor.brolineDarkBlue,
                   ),
-                  hintText: "Enter your Phone number",
+                  hintText: "Your Phone Number",
                 ),
               ),
             ),
